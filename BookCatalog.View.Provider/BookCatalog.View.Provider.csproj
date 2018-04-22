@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{29A35125-C181-4119-A72D-527466B67360}</ProjectGuid>
+    <ProjectGuid>{D76A1183-B409-4B08-A34D-75E18F0917CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BookCatalog.Resolver</RootNamespace>
-    <AssemblyName>BookCatalog.Resolver</AssemblyName>
+    <RootNamespace>BookCatalog.View.Provider</RootNamespace>
+    <AssemblyName>BookCatalog.View.Provider</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,16 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorDM.cs" />
+    <Compile Include="BookDM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookCatalog.Data.Provider\BookCatalog.Data.Provider.csproj">
-      <Project>{88631719-30da-43d3-acbd-1b698779c794}</Project>
-      <Name>BookCatalog.Data.Provider</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookCatalog.Skeleton\BookCatalog.Skeleton.csproj">
       <Project>{a04cc9e0-bd52-4066-b285-ec387edce30d}</Project>
       <Name>BookCatalog.Skeleton</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookCatalog.View.Model\BookCatalog.View.Model.csproj">
+      <Project>{e8d24b51-fbe7-40d4-8d33-7ce6b80104b7}</Project>
+      <Name>BookCatalog.View.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

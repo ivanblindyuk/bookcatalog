@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BookCatalog.Skeleton.DM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookCatalog.Skeleton
+namespace BookCatalog.View.Provider
 {
-    public interface IBookRepository
+    public class BookDM : IBookDM
     {
     }
 }

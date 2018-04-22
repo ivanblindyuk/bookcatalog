@@ -94,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthorController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,6 +104,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\Author\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,8 +114,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Book\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookCatalog.Resolution\BookCatalog.Resolution.csproj">
+      <Project>{29a35125-c181-4119-a72d-527466b67360}</Project>
+      <Name>BookCatalog.Resolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookCatalog.Skeleton\BookCatalog.Skeleton.csproj">
+      <Project>{a04cc9e0-bd52-4066-b285-ec387edce30d}</Project>
+      <Name>BookCatalog.Skeleton</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookCatalog.View.Model\BookCatalog.View.Model.csproj">
+      <Project>{e8d24b51-fbe7-40d4-8d33-7ce6b80104b7}</Project>
+      <Name>BookCatalog.View.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

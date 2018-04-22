@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("BookCatalog.Resolver")]
+[assembly: AssemblyTitle("BookCatalog.View.Provider")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BookCatalog.Resolver")]
+[assembly: AssemblyProduct("BookCatalog.View.Provider")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("29a35125-c181-4119-a72d-527466b67360")]
+[assembly: Guid("d76a1183-b409-4b08-a34d-75e18f0917cb")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

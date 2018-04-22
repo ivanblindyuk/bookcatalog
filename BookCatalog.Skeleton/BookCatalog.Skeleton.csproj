@@ -40,14 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAuthorRepository.cs" />
-    <Compile Include="IBookRepository.cs" />
+    <Compile Include="DM\IAuthorDM.cs" />
+    <Compile Include="DM\IBookDM.cs" />
+    <Compile Include="Repositories\IAuthorRepository.cs" />
+    <Compile Include="Repositories\IBookRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookCatalog.Data.Model\BookCatalog.Data.Model.csproj">
       <Project>{2ef04cd5-0d67-4bbd-8588-21e3837daefd}</Project>
       <Name>BookCatalog.Data.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookCatalog.View.Model\BookCatalog.View.Model.csproj">
+      <Project>{e8d24b51-fbe7-40d4-8d33-7ce6b80104b7}</Project>
+      <Name>BookCatalog.View.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
