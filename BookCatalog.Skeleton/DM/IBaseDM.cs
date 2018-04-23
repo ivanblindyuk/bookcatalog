@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookCatalog.Skeleton.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.DM
 {
-    public interface IBookDM : IBaseDM
+    public interface IBaseDM
     {
+        IBookCatalogContext BCContext {get; set;}
     }
 }

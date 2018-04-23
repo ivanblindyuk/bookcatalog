@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.DM
 {
-    public interface IAuthorDM
+    public interface IAuthorDM : IBaseDM
     {
         IEnumerable<AuthorVM> GetAuthors();
     }

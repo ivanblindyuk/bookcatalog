@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookCatalog.Skeleton.DM
+namespace BookCatalog.Skeleton.Core
 {
-    public interface IBookDM : IBaseDM
+    public interface IBookCatalogContext
     {
+        IResolver Resolver { get; set; }
     }
 }

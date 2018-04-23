@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IBookCatalogContext.cs" />
+    <Compile Include="Core\IResolver.cs" />
     <Compile Include="DM\IAuthorDM.cs" />
+    <Compile Include="DM\IBaseDM.cs" />
     <Compile Include="DM\IBookDM.cs" />
     <Compile Include="Repositories\IAuthorRepository.cs" />
     <Compile Include="Repositories\IBookRepository.cs" />

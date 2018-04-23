@@ -1,4 +1,5 @@
 ﻿using BookCatalog.Resolution.DI;
+using BookCatalog.Skeleton.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using Unity;
 
 namespace BookCatalog.Resolution
 {
-    public class Resolver
+    public class Resolver : IResolver
     {
         static Resolver _instance;
         public static Resolver Instance
