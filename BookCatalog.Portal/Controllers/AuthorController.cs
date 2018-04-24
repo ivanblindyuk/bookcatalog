@@ -7,11 +7,11 @@ using System.Web.Mvc;
 
 namespace BookCatalog.Portal.Controllers
 {
-    public class AuthorController : Controller
+    public class AuthorController : BaseController
     {
         public ActionResult Index()
         {
-            var dm = Resolution.Resolver.Instance.Resolve<IAuthorDM>();
+            var dm = BCContext.Resolver.Resolve<IAuthorDM>();
             var model = dm.GetAuthors();
 
             return View(model);

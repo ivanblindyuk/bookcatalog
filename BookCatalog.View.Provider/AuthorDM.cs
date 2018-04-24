@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BookCatalog.View.Model;
 using BookCatalog.Skeleton.Repositories;
+using BookCatalog.Data.Model;
 
 namespace BookCatalog.View.Provider
 {
@@ -14,20 +15,9 @@ namespace BookCatalog.View.Provider
         public IEnumerable<AuthorVM> GetAuthors()
         {
             var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>();
+            var authors = authorsRepo.GetAll();
 
-            return new List<AuthorVM>
-            {
-                new AuthorVM
-                {
-                    FirstName = "Name",
-                    LastName = "My"
-                },
-                new AuthorVM
-                {
-                    FirstName = "Name",
-                    LastName = "Your"
-                }
-            };
+            return BCContext.Mapper.Map<IEnumerable<Author>, IEnumerable<AuthorVM>>(authors);
         }
     }
 }

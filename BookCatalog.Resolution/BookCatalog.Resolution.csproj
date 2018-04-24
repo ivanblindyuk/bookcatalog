@@ -77,12 +77,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookCatalogContext.cs" />
     <Compile Include="DI\DomainModelInjection.cs" />
     <Compile Include="DI\RepositoryInjection.cs" />
+    <Compile Include="Mapper.cs" />
+    <Compile Include="Mapping\Maps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolver.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookCatalog.Data.Model\BookCatalog.Data.Model.csproj">
+      <Project>{2EF04CD5-0D67-4BBD-8588-21E3837DAEFD}</Project>
+      <Name>BookCatalog.Data.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookCatalog.Data.Provider\BookCatalog.Data.Provider.csproj">
       <Project>{88631719-30da-43d3-acbd-1b698779c794}</Project>
       <Name>BookCatalog.Data.Provider</Name>
@@ -90,6 +97,10 @@
     <ProjectReference Include="..\BookCatalog.Skeleton\BookCatalog.Skeleton.csproj">
       <Project>{a04cc9e0-bd52-4066-b285-ec387edce30d}</Project>
       <Name>BookCatalog.Skeleton</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookCatalog.View.Model\BookCatalog.View.Model.csproj">
+      <Project>{E8D24B51-FBE7-40D4-8D33-7CE6B80104B7}</Project>
+      <Name>BookCatalog.View.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookCatalog.View.Provider\BookCatalog.View.Provider.csproj">
       <Project>{D76A1183-B409-4B08-A34D-75E18F0917CB}</Project>
@@ -99,9 +110,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

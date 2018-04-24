@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BookCatalog.Portal.Controllers
 {
-    public class BookController : Controller
+    public class BookController : BaseController
     {
         public ActionResult Index()
         {

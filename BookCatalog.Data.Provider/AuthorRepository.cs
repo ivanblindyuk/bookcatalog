@@ -12,7 +12,19 @@ namespace BookCatalog.Data.Provider
     {
         public IEnumerable<Author> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<Author>
+            {
+                new Author
+                {
+                    FirstName = "Name",
+                    LastName = "My"
+                },
+                new Author
+                {
+                    FirstName = "Name",
+                    LastName = "Your"
+                }
+            };
         }
     }
 }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.Core
 {
-    public interface IBookCatalogContext
+    public interface IMapper
     {
-        IResolver Resolver { get; }
-        IMapper Mapper { get; }
+        TOut Map<TIn, TOut>(TIn source);
     }
 }

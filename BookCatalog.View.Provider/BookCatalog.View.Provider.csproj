@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookCatalog.Data.Model\BookCatalog.Data.Model.csproj">
+      <Project>{2ef04cd5-0d67-4bbd-8588-21e3837daefd}</Project>
+      <Name>BookCatalog.Data.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookCatalog.Skeleton\BookCatalog.Skeleton.csproj">
       <Project>{a04cc9e0-bd52-4066-b285-ec387edce30d}</Project>
       <Name>BookCatalog.Skeleton</Name>

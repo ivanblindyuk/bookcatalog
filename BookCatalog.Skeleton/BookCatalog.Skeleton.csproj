@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IBookCatalogContext.cs" />
+    <Compile Include="Core\IMapper.cs" />
     <Compile Include="Core\IResolver.cs" />
     <Compile Include="DM\IAuthorDM.cs" />
     <Compile Include="DM\IBaseDM.cs" />
