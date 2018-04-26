@@ -8,7 +8,7 @@ using BookCatalog.Data.Model;
 
 namespace BookCatalog.Data.Provider
 {
-    public class AuthorRepository : IAuthorRepository
+    public class AuthorRepository : DapperRepository, IAuthorRepository
     {
         public IEnumerable<Author> GetAll()
         {
