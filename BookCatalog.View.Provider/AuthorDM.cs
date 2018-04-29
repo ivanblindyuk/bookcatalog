@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 using BookCatalog.View.Model;
 using BookCatalog.Skeleton.Repositories;
 using BookCatalog.Data.Model;
+using BookCatalog.Skeleton.Core;
 
 namespace BookCatalog.View.Provider
 {
     public class AuthorDM : BaseDM, IAuthorDM
     {
+        public AuthorDM(IBookCatalogContext context)
+            : base(context)
+        {
+        }
+
         public IEnumerable<AuthorVM> GetAuthors()
         {
             var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>();

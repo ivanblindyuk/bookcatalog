@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.Repositories
 {
-    public interface IAuthorRepository
+    public interface IAuthorRepository : IDapperRepository<Author>
     {
         IEnumerable<Author> GetAll();
     }

@@ -9,19 +9,27 @@ namespace BookCatalog.Resolution
 {
     public class BookCatalogContext : IBookCatalogContext
     {
+        IMapper _mapper;
         public IMapper Mapper
         {
             get
             {
-                return Resolution.Mapper.Instance;
+                if (_mapper == null)
+                    _mapper = new Mapper();
+
+                return _mapper;
             }            
         }
 
+        IResolver _resolver;
         public IResolver Resolver
         {
             get
             {
-                return Resolution.Resolver.Instance;
+                if (_resolver == null)
+                    _resolver = new Resolver(this);
+
+                return _resolver;
             }
         }
     }

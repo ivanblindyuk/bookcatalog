@@ -11,5 +11,10 @@ namespace BookCatalog.View.Provider
     public abstract class BaseDM : IBaseDM
     {
         public IBookCatalogContext BCContext { get; set; }
+
+        public BaseDM(IBookCatalogContext context)
+        {
+            BCContext = context;
+        }
     }
 }

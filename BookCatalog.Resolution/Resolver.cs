@@ -11,22 +11,13 @@ namespace BookCatalog.Resolution
 {
     public class Resolver : IResolver
     {
-        static Resolver _instance;
-        public static Resolver Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new Resolver();
-
-                return _instance;
-            }
-        }
-
+        IBookCatalogContext _context;
         UnityContainer _container;
 
-        private Resolver()
+        public Resolver(IBookCatalogContext context)
         {
+            _context = context;
+
             InitializeComponents();
         }
 
@@ -40,7 +31,7 @@ namespace BookCatalog.Resolution
             _container = new UnityContainer();
 
             new RepositoryInjection().Inject(_container);
-            new DomainModelInjection().Inject(_container);
+            new DomainModelInjection(_context).Inject(_container);
         }
 
         public T Resolve<T>()

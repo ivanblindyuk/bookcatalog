@@ -49,6 +49,7 @@
     <Compile Include="Repositories\IAuthorRepository.cs" />
     <Compile Include="Repositories\IBookRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDapperRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookCatalog.Data.Model\BookCatalog.Data.Model.csproj">

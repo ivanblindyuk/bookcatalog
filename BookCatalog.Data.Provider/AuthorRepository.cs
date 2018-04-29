@@ -8,23 +8,11 @@ using BookCatalog.Data.Model;
 
 namespace BookCatalog.Data.Provider
 {
-    public class AuthorRepository : DapperRepository, IAuthorRepository
+    public class AuthorRepository : DapperRepository<Author>, IAuthorRepository
     {
         public IEnumerable<Author> GetAll()
         {
-            return new List<Author>
-            {
-                new Author
-                {
-                    FirstName = "Name",
-                    LastName = "My"
-                },
-                new Author
-                {
-                    FirstName = "Name",
-                    LastName = "Your"
-                }
-            };
+            return QueryMany<Author>("Select * from tblAuthors");
         }
     }
 }

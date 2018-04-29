@@ -10,21 +10,9 @@ namespace BookCatalog.Resolution
 {
     public class Mapper : IMapper
     {
-        static Mapper _instance;
-        public static Mapper Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new Mapper();
-
-                return _instance;
-            }
-        }
-
         AutoMapper.IMapper _mapper;
 
-        private Mapper()
+        public Mapper()
         {
             InitializeComponents();
         }
