@@ -287,4 +287,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-#Web.ConnectionStrings.config
+**/Web.ConnectionStrings.config
