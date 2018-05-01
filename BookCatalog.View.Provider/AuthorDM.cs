@@ -20,7 +20,7 @@ namespace BookCatalog.View.Provider
 
         public IEnumerable<AuthorVM> GetAuthors()
         {
-            var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>();
+            var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext);
             var authors = authorsRepo.GetAll();
 
             return BCContext.Mapper.Map<IEnumerable<Author>, IEnumerable<AuthorVM>>(authors);

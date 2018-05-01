@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.Core
 {
-    public interface IBookCatalogContext
+    public interface IDbContext
     {
-        IDbContext DbContext { get; }
-        IResolver Resolver { get; }
-        IMapper Mapper { get; }
+        string ConnectionString { get; set; }
     }
 }

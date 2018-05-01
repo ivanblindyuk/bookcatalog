@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookCatalog.Resolution
+namespace BookCatalog.Resolution.Core
 {
     public class BookCatalogContext : IBookCatalogContext
     {
@@ -27,9 +27,21 @@ namespace BookCatalog.Resolution
             get
             {
                 if (_resolver == null)
-                    _resolver = new Resolver(this);
+                    _resolver = new Resolver();
 
                 return _resolver;
+            }
+        }
+
+        IDbContext _dbContext;
+        public IDbContext DbContext
+        {
+            get
+            {
+                if (_dbContext == null)
+                    _dbContext = new DbContext();
+
+                return _dbContext;
             }
         }
     }

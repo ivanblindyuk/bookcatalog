@@ -9,5 +9,6 @@ namespace BookCatalog.Skeleton.Core
     public interface IResolver
     {
         T Resolve<T>();
+        T Resolve<T>(params object[] parameters);
     }
 }

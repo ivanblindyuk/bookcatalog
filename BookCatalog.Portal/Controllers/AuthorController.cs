@@ -11,7 +11,7 @@ namespace BookCatalog.Portal.Controllers
     {
         public ActionResult Index()
         {
-            var dm = BCContext.Resolver.Resolve<IAuthorDM>();
+            var dm = BCContext.Resolver.Resolve<IAuthorDM>(BCContext);
             var model = dm.GetAuthors();
 
             return View(model);

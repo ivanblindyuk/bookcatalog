@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookCatalog.Skeleton.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace BookCatalog.Skeleton.Repositories
 {
     public interface IDapperRepository<TEntity>
     {
+        IDbContext DbContext { get; set; }
+
         TEntity Get(int id);
         int Insert(TEntity entity);
         void Delete(int id);

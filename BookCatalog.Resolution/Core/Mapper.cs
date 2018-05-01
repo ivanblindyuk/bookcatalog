@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookCatalog.Resolution
+namespace BookCatalog.Resolution.Core
 {
     public class Mapper : IMapper
     {

@@ -106,6 +106,10 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Author\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\debug.pubxml" />
+    <Content Include="Web.ConnectionStrings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,14 +10,22 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Configuration;
+using BookCatalog.Skeleton.Core;
 
 namespace BookCatalog.Data.Provider
 {
     public abstract class DapperRepository<TEntity> : IDapperRepository<TEntity>
     {
+        public IDbContext DbContext { get; set; }
+
+        public DapperRepository(IDbContext context)
+        {
+            DbContext = context;
+        }
+
         public void Delete(int id)
         {
-            using(IDbConnection db = new SqlConnection(ConnectionString))
+            using(IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
                 db.Execute($"Delete from {TableName} where Id = @Id", new { Id = id });
             }
@@ -45,7 +53,7 @@ namespace BookCatalog.Data.Provider
 
         public IEnumerable<T> QueryMany<T>(string query)
         {
-            using(IDbConnection db = new SqlConnection(ConnectionString))
+            using(IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
                 return db.Query<T>(query);
             }
@@ -67,12 +75,5 @@ namespace BookCatalog.Data.Provider
             }
         }
 
-        private string ConnectionString
-        {
-            get
-            {
-                return ConfigurationManager.ConnectionStrings["BC"].ConnectionString;
-            }
-        }
     }
 }
