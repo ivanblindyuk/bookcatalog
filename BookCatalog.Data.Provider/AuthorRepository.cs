@@ -18,7 +18,7 @@ namespace BookCatalog.Data.Provider
 
         public IEnumerable<Author> GetAll()
         {
-            return QueryMany<Author>("Select * from tblAuthors");
+            return ExecuteMultiQuery<Author>("Select * from tblAuthors");
         }
     }
 }

@@ -11,10 +11,12 @@ using System.Data.SqlClient;
 using Dapper;
 using System.Configuration;
 using BookCatalog.Skeleton.Core;
+using Dapper.Contrib.Extensions;
 
 namespace BookCatalog.Data.Provider
 {
     public abstract class DapperRepository<TEntity> : IDapperRepository<TEntity>
+        where TEntity : class
     {
         public IDbContext DbContext { get; set; }
 
@@ -27,52 +29,86 @@ namespace BookCatalog.Data.Provider
         {
             using(IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
-                db.Execute($"Delete from {TableName} where Id = @Id", new { Id = id });
+                TEntity entity = Get(id);
+                db.Delete(entity);
             }
         }
-
-        public void Execute(string query)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public TEntity Get(int id)
         {
-            throw new NotImplementedException();
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                return db.Get<TEntity>(id);
+            }
         }
 
         public int Insert(TEntity entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public T Query<T>(string query)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> QueryMany<T>(string query)
-        {
-            using(IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
-                return db.Query<T>(query);
+                return (int)db.Insert(entity);
+            }
+        }
+        
+        public void Update(TEntity entity)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                db.Update(entity);
+            }
+        }
+      
+        protected void ExecuteSP(string spName)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                db.Execute(spName, commandType: CommandType.StoredProcedure);
             }
         }
 
-        private string TableName
+        protected void Execute(string query)
         {
-            get
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
-                Type entityType = typeof(TEntity);
-                TableAttribute tableAttr = entityType.GetCustomAttribute<TableAttribute>();
-
-                if (tableAttr == null)
-                    throw new Exception("Entity wasn't recognized as table entity");
-                else if (string.IsNullOrEmpty(tableAttr.Name))
-                    throw new Exception("Table name is not specified");
-                else
-                    return tableAttr.Name;
+                db.Execute(query);
             }
+        }
+
+        protected IEnumerable<T> ExecuteMultiQuery<T>(string query, object param = null)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                return db.Query<T>(query, param: param);
+            }
+        }
+
+        protected T ExecuteSingleQuery<T>(string query)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                return db.QueryFirstOrDefault<T>(query);
+            }
+        }
+
+        protected T ExecuteSingleSP<T>(string spName)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                return db.QueryFirstOrDefault<T>(spName, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        protected IEnumerable<T> ExecuteMultiSP<T>(string spName)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                return db.Query<T>(spName, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void Dispose()
+        {
+            
         }
 
     }

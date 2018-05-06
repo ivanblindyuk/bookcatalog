@@ -63,10 +63,14 @@
   <ItemGroup>
     <Build Include="Tables\tblAuthors.sql" />
     <Build Include="Tables\tblBooks.sql" />
+    <Build Include="Tables\tblBooks_Authors.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PostDeployment\InsertAuthors.sql" />
-    <None Include="PostDeployment\InsertBooks.sql" />
+    <None Include="PostDeployment\Insert_tblAuthors.sql" />
+    <None Include="PostDeployment\Insert_tblBooks.sql" />
     <PostDeploy Include="PostDeployment\PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeployment\Insert_tblBooks_Authors.sql" />
   </ItemGroup>
 </Project>

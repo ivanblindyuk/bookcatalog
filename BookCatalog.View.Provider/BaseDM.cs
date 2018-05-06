@@ -16,5 +16,10 @@ namespace BookCatalog.View.Provider
         {
             BCContext = context;
         }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }
