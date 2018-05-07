@@ -15,5 +15,17 @@ namespace BookCatalog.Data.Provider
             : base(context)
         {
         }
+
+        public IEnumerable<Author> GetAuthors(int bookId)
+        {
+            return ExecuteMultiQuery<Author>(@"Select a.* from tblAuthors as a
+                                                join tblBooks_Authors as ba on a.Id = ba.AuthorId
+                                                where ba.BookId = @BookId", new { BookId = bookId });
+        }
+
+        public IEnumerable<Book> GetBooks()
+        {
+            return ExecuteMultiQuery<Book>("Select * from tblBooks");
+        }
     }
 }

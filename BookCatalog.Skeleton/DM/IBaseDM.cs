@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.DM
 {
-    public interface IBaseDM
+    public interface IBaseDM : IDisposable
     {
         IBookCatalogContext BCContext {get; set;}
     }

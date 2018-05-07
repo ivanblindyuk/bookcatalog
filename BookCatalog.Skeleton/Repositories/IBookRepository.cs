@@ -9,5 +9,7 @@ namespace BookCatalog.Skeleton.Repositories
 {
     public interface IBookRepository : IDapperRepository<Book>
     {
+        IEnumerable<Book> GetBooks();
+        IEnumerable<Author> GetAuthors(int bookId);
     }
 }

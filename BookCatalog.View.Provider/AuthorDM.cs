@@ -20,10 +20,12 @@ namespace BookCatalog.View.Provider
 
         public IEnumerable<AuthorVM> GetAuthors()
         {
-            var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext);
-            var authors = authorsRepo.GetAll();
+            using (var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            {
+                var authors = authorsRepo.GetAll();
 
-            return BCContext.Mapper.Map<IEnumerable<Author>, IEnumerable<AuthorVM>>(authors);
+                return BCContext.Mapper.Map<IEnumerable<Author>, IEnumerable<AuthorVM>>(authors);
+            }
         }
     }
 }

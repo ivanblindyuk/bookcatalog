@@ -1,12 +1,14 @@
-﻿using System;
+﻿using BookCatalog.View.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookCatalog.Skeleton.DM
 {
     public interface IBookDM : IBaseDM
     {
+        IEnumerable<BookVM> GetBooks();
+        BookVM GetBook(int id);
+        void Create(BookVM book);
+        void Update(BookVM book);
+        void Delete(int id);
     }
 }
