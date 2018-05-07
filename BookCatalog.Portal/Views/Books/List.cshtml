@@ -1,35 +1,28 @@
 ﻿@model IEnumerable<BookCatalog.View.Model.BookVM>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Books list";
 }
 
-<!DOCTYPE html>
+<p>
+    @Html.ActionLink("New book", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ranking)
+        </th>
+        <th></th>
+    </tr>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>List</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("New book", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ranking)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -41,12 +34,10 @@
                 @Html.DisplayFor(modelItem => item.Ranking)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id  }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
-    
-    </table>
-</body>
-</html>
+
+</table>
