@@ -18,6 +18,34 @@ namespace BookCatalog.View.Provider
         {
         }
 
+        public void Create(AuthorVM author)
+        {
+            using(var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            {
+                var authorEntity = BCContext.Mapper.Map<AuthorVM, Author>(author);
+
+                authorRepo.Insert(authorEntity);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            {
+                authorRepo.Delete(id);
+            }
+        }
+
+        public AuthorVM GetAuthor(int id)
+        {
+            using (var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            {
+                var authorEntity = authorRepo.Get(id);
+
+                return BCContext.Mapper.Map<Author, AuthorVM>(authorEntity);
+            }
+        }
+
         public IEnumerable<AuthorVM> GetAuthors()
         {
             using (var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
@@ -25,6 +53,16 @@ namespace BookCatalog.View.Provider
                 var authors = authorsRepo.GetAll();
 
                 return BCContext.Mapper.Map<IEnumerable<Author>, IEnumerable<AuthorVM>>(authors);
+            }
+        }
+
+        public void Update(AuthorVM author)
+        {
+            using (var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            {
+                var authorEntity = BCContext.Mapper.Map<AuthorVM, Author>(author);
+
+                authorRepo.Update(authorEntity);
             }
         }
     }
