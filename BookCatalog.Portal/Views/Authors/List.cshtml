@@ -1,11 +1,10 @@
-﻿@model IEnumerable<BookCatalog.View.Model.AuthorVM>
+﻿@using BookCatalog.Portal.Helpers.Extentions
+@using BookCatalog.Portal.Helpers.KnownValues
 
-@{
-    ViewBag.Title = "Authors list";
-}
+@model IEnumerable<BookCatalog.View.Model.AuthorVM>
 
 <p>
-    @Html.ActionLink("New Author", "Create")
+    @Html.ActionGlyphiconLink("New author", Glyphicon.Plus, "Create", new { @class = "btn btn-outline-success", role = "button" })
 </p>
 <table class="table">
     <tr>
@@ -35,3 +34,9 @@
     }
 
 </table>
+<script>
+    $(document).ready(function () {
+        NavMenu.Initialize();
+        NavMenu.Activate(NavMenu.ITEMS.Authors);
+    });
+</script>

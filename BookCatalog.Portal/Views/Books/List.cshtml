@@ -1,11 +1,10 @@
-﻿@model IEnumerable<BookCatalog.View.Model.BookVM>
+﻿@using BookCatalog.Portal.Helpers.Extentions
+@using BookCatalog.Portal.Helpers.KnownValues
 
-@{
-    ViewBag.Title = "Books list";
-}
+@model IEnumerable<BookCatalog.View.Model.BookVM>
 
 <p>
-    @Html.ActionLink("New book", "Create")
+    @Html.ActionGlyphiconLink("New book", Glyphicon.Plus, "Create", new { @class = "btn btn-outline-success", role = "button" })
 </p>
 <table class="table">
     <tr>
@@ -17,6 +16,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Ranking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageCount)
         </th>
         <th></th>
     </tr>
@@ -34,6 +36,9 @@
                 @Html.DisplayFor(modelItem => item.Ranking)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.PageCount)
+            </td>
+            <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
@@ -41,3 +46,9 @@
     }
 
 </table>
+<script>
+    $(document).ready(function () {
+        NavMenu.Initialize();
+        NavMenu.Activate(NavMenu.ITEMS.Books);
+    });
+</script>

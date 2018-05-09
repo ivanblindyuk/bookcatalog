@@ -91,6 +91,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Bootstrap\bootstrap.bundle.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\External\jquery-3.3.1.js" />
+    <Content Include="Scripts\External\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\External\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\External\knockout-3.4.2.js" />
+    <Content Include="Scripts\External\popper.js" />
+    <Content Include="Scripts\External\popper.min.js" />
+    <Content Include="Scripts\Main\nav-menu.js" />
+    <Content Include="Styles\Bootstrap\bootstrap-grid.css" />
+    <Content Include="Styles\Bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Styles\Bootstrap\bootstrap-reboot.css" />
+    <Content Include="Styles\Bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="Styles\Bootstrap\bootstrap.css" />
+    <Content Include="Styles\Bootstrap\bootstrap.min.css" />
+    <Content Include="Styles\FontAwesome\css\fa-brands.css" />
+    <Content Include="Styles\FontAwesome\css\fa-brands.min.css" />
+    <Content Include="Styles\FontAwesome\css\fa-regular.css" />
+    <Content Include="Styles\FontAwesome\css\fa-regular.min.css" />
+    <Content Include="Styles\FontAwesome\css\fa-solid.css" />
+    <Content Include="Styles\FontAwesome\css\fa-solid.min.css" />
+    <Content Include="Styles\FontAwesome\css\fontawesome-all.css" />
+    <Content Include="Styles\FontAwesome\css\fontawesome-all.min.css" />
+    <Content Include="Styles\FontAwesome\css\fontawesome.css" />
+    <Content Include="Styles\FontAwesome\css\fontawesome.min.css" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Styles\main.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +132,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Extentions\EnumExtentions.cs" />
+    <Compile Include="Helpers\Extentions\MvcHtmlStringExtentions.cs" />
+    <Compile Include="Helpers\KnownValues\Glyphicon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +153,60 @@
     <Content Include="Views\Authors\Create.cshtml" />
     <Content Include="Views\Authors\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\Bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\Bootstrap\bootstrap.js.map" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js.map" />
+    <Content Include="Styles\Bootstrap\bootstrap-grid.css.map" />
+    <Content Include="Styles\Bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="Styles\Bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="Styles\Bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Styles\Bootstrap\bootstrap.css.map" />
+    <Content Include="Styles\Bootstrap\bootstrap.min.css.map" />
+    <Content Include="Styles\FontAwesome\less\fa-brands.less" />
+    <Content Include="Styles\FontAwesome\less\fa-regular.less" />
+    <Content Include="Styles\FontAwesome\less\fa-solid.less" />
+    <Content Include="Styles\FontAwesome\less\fontawesome.less" />
+    <Content Include="Styles\FontAwesome\less\_animated.less" />
+    <Content Include="Styles\FontAwesome\less\_bordered-pulled.less" />
+    <Content Include="Styles\FontAwesome\less\_core.less" />
+    <Content Include="Styles\FontAwesome\less\_fixed-width.less" />
+    <Content Include="Styles\FontAwesome\less\_icons.less" />
+    <Content Include="Styles\FontAwesome\less\_larger.less" />
+    <Content Include="Styles\FontAwesome\less\_list.less" />
+    <Content Include="Styles\FontAwesome\less\_mixins.less" />
+    <Content Include="Styles\FontAwesome\less\_rotated-flipped.less" />
+    <Content Include="Styles\FontAwesome\less\_screen-reader.less" />
+    <Content Include="Styles\FontAwesome\less\_stacked.less" />
+    <Content Include="Styles\FontAwesome\less\_variables.less" />
+    <Content Include="Styles\FontAwesome\scss\fa-brands.scss" />
+    <Content Include="Styles\FontAwesome\scss\fa-regular.scss" />
+    <Content Include="Styles\FontAwesome\scss\fa-solid.scss" />
+    <Content Include="Styles\FontAwesome\scss\fontawesome.scss" />
+    <Content Include="Styles\FontAwesome\scss\_animated.scss" />
+    <Content Include="Styles\FontAwesome\scss\_bordered-pulled.scss" />
+    <Content Include="Styles\FontAwesome\scss\_core.scss" />
+    <Content Include="Styles\FontAwesome\scss\_fixed-width.scss" />
+    <Content Include="Styles\FontAwesome\scss\_icons.scss" />
+    <Content Include="Styles\FontAwesome\scss\_larger.scss" />
+    <Content Include="Styles\FontAwesome\scss\_list.scss" />
+    <Content Include="Styles\FontAwesome\scss\_mixins.scss" />
+    <Content Include="Styles\FontAwesome\scss\_rotated-flipped.scss" />
+    <Content Include="Styles\FontAwesome\scss\_screen-reader.scss" />
+    <Content Include="Styles\FontAwesome\scss\_stacked.scss" />
+    <Content Include="Styles\FontAwesome\scss\_variables.scss" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
