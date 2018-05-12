@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <Use64BitIISExpress />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,11 +45,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,6 +67,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -65,6 +78,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -90,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
@@ -99,9 +117,16 @@
     <Content Include="Scripts\External\jquery-3.3.1.min.js" />
     <Content Include="Scripts\External\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\External\knockout-3.4.2.js" />
+    <Content Include="Scripts\External\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\External\knockout.mapping-latest.js" />
     <Content Include="Scripts\External\popper.js" />
     <Content Include="Scripts\External\popper.min.js" />
+    <Content Include="Scripts\Main\ajax-global.js" />
+    <Content Include="Scripts\Main\ko-extentions.js" />
+    <Content Include="Scripts\Main\loading-spinner.js" />
     <Content Include="Scripts\Main\nav-menu.js" />
+    <Content Include="Scripts\Views\Books\book-details.js" />
+    <Content Include="Scripts\Views\Books\book-list.js" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.css" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Styles\Bootstrap\bootstrap-reboot.css" />
@@ -122,9 +147,15 @@
     <Content Include="Styles\FontAwesome\webfonts\fa-regular-400.svg" />
     <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.svg" />
     <Content Include="Styles\main.css" />
+    <Content Include="Styles\WaitMe\img.svg" />
+    <Content Include="Styles\WaitMe\waitMe.css" />
+    <Content Include="Styles\WaitMe\waitMe.js" />
+    <Content Include="Styles\WaitMe\waitMe.min.css" />
+    <Content Include="Styles\WaitMe\waitMe.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -135,6 +166,10 @@
     <Compile Include="Helpers\Extentions\EnumExtentions.cs" />
     <Compile Include="Helpers\Extentions\MvcHtmlStringExtentions.cs" />
     <Compile Include="Helpers\KnownValues\Glyphicon.cs" />
+    <Compile Include="Helpers\Optimization\Scripts\Authors.cs" />
+    <Compile Include="Helpers\Optimization\Scripts\Books.cs" />
+    <Compile Include="Helpers\Optimization\Scripts\Main.cs" />
+    <Compile Include="Helpers\Optimization\Styles\Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +181,6 @@
     </Content>
     <Content Include="Views\Books\List.cshtml" />
     <Content Include="Views\Books\Edit.cshtml" />
-    <Content Include="Views\Books\Create.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Authors\List.cshtml" />
@@ -207,6 +241,7 @@
     <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.ttf" />
     <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.woff" />
     <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Books\_Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

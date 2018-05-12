@@ -24,9 +24,12 @@ namespace BookCatalog.Portal.Helpers.Extentions
             return MvcHtmlString.Create(i.ToString());
         }
 
-        public static MvcHtmlString ActionGlyphiconLink(this HtmlHelper htmlHelper, string linkText, Glyphicon icon, string actionName, object htmlAttributes)
+        public static MvcHtmlString ActionGlyphiconLink(this HtmlHelper htmlHelper, string linkText, Glyphicon icon, string actionName, object htmlAttributes = null)
         {
-            var glyphicon = htmlHelper.Glyphicon(icon, new { @class = "mr-1" });
+            object icoHtmlAttributes = null;
+            if (!string.IsNullOrEmpty(linkText)) icoHtmlAttributes = new { @class = "mr-1" };
+
+            var glyphicon = htmlHelper.Glyphicon(icon, icoHtmlAttributes);
             string glyphiconHtml = glyphicon.ToHtmlString();
                                     
             var urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
@@ -40,6 +43,23 @@ namespace BookCatalog.Portal.Helpers.Extentions
             a.MergeAttributes(attrs);
             
             return MvcHtmlString.Create(a.ToString());
+        }
+
+        public static MvcHtmlString ButtonGlyphicon(this HtmlHelper htmlHelper, string text, Glyphicon icon, object htmlAttributes = null)
+        {
+            object icoHtmlAttributes = null;
+            if (!string.IsNullOrEmpty(text)) icoHtmlAttributes = new { @class = "mr-1" };
+
+            var glyphicon = htmlHelper.Glyphicon(icon, icoHtmlAttributes);
+            string glyphiconHtml = glyphicon.ToHtmlString();
+            
+            var button = new TagBuilder("button");
+            button.InnerHtml = string.Format("{0}{1}", glyphiconHtml, text);
+
+            var attrs = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            button.MergeAttributes(attrs);
+
+            return MvcHtmlString.Create(button.ToString());
         }
     }
 }

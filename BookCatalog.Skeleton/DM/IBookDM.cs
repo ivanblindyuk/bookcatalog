@@ -7,6 +7,7 @@ namespace BookCatalog.Skeleton.DM
     {
         IEnumerable<BookVM> GetBooks();
         BookVM GetBook(int id);
+        void Save(BookVM book);
         void Create(BookVM book);
         void Update(BookVM book);
         void Delete(int id);

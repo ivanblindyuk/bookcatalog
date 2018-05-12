@@ -3,8 +3,13 @@
 
 @model IEnumerable<BookCatalog.View.Model.BookVM>
 
+@System.Web.Optimization.Scripts.Render("~/bundles/scripts/books")
+
 <p>
-    @Html.ActionGlyphiconLink("New book", Glyphicon.Plus, "Create", new { @class = "btn btn-outline-success", role = "button" })
+    @Html.ButtonGlyphicon("New book", Glyphicon.Add, new { id = "btnAdd", @class = "btn btn-outline-success" })
+</p>
+<p>
+    @Html.Partial("_Details")
 </p>
 <table class="table">
     <tr>
@@ -25,27 +30,28 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ranking)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PageCount)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ranking)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageCount)
+        </td>
+        <td>
+            @Html.ButtonGlyphicon(null, Glyphicon.Edit, new { key = item.Id, @class = "btn btn-outline-warning btn-edit" })
+            @Html.ButtonGlyphicon(null, Glyphicon.Delete, new { key = item.Id, @class = "btn btn-outline-danger btn-delete" })
+        </td>
+    </tr>
     }
 
 </table>
 <script>
     NavMenu.Activate(NavMenu.ITEMS.Books);
+    BookList.Initialize();
 </script>

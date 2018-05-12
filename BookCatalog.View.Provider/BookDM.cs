@@ -18,6 +18,18 @@ namespace BookCatalog.View.Provider
         {
         }
 
+        public void Save(BookVM book)
+        {
+            if(book.Id > 0)
+            {
+                Update(book);
+            }
+            else
+            {
+                Create(book);
+            }
+        }
+
         public void Create(BookVM book)
         {
             using (var bookRepo = BCContext.Resolver.Resolve<IBookRepository>(BCContext.DbContext))

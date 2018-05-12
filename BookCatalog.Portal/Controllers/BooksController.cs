@@ -20,50 +20,31 @@ namespace BookCatalog.Portal.Controllers
             }
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult Create(BookVM book)
+        public void Save(BookVM book)
         {
             using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
             {
-                bookDM.Create(book);
-
-                return RedirectToAction("List");
+                bookDM.Save(book);
             }
         }
 
-        public ActionResult Edit(int id)
+        public JsonResult Get(int id)
         {
             using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
             {
                 var model = bookDM.GetBook(id);
 
-                return View(model);
+                return ToJson(model);
             }
         }
 
         [HttpPost]
-        public ActionResult Edit(BookVM book)
-        {
-            using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
-            {
-                bookDM.Update(book);
-
-                return RedirectToAction("List");
-            }
-        }
-        
-        public ActionResult Delete(int id)
+        public void Delete(int id)
         {
             using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
             {
                 bookDM.Delete(id);
-
-                return RedirectToAction("List");
             }
         }
     }

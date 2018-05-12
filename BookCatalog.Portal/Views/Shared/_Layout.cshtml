@@ -7,13 +7,17 @@
 
     <link href="~/Styles/Bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="~/Styles/FontAwesome/css/fontawesome-all.css" rel="stylesheet" />
-    <link href="~/Styles/main.css" rel="stylesheet" />
+    <link href="~/Styles/WaitMe/waitMe.css" rel="stylesheet" />
+    @System.Web.Optimization.Styles.Render("~/bundles/styles/main")
+
 
     <script src="~/Scripts/External/jquery-3.3.1.js"></script>
     <script src="~/Scripts/External/popper.js"></script>
     <script src="~/Scripts/Bootstrap/bootstrap.js"></script>
     <script src="~/Scripts/External/knockout-3.4.2.js"></script>
-    <script src="~/Scripts/Main/nav-menu.js"></script>
+    <script src="~/Scripts/External/knockout.mapping-latest.js"></script>
+    <script src="~/Styles/WaitMe/waitMe.js"></script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/main")
 
     <title>Book catalog</title>
 </head>
