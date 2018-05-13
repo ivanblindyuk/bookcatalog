@@ -113,17 +113,23 @@
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\External\gijgo.js" />
+    <Content Include="Scripts\External\gijgo.min.js" />
     <Content Include="Scripts\External\jquery-3.3.1.js" />
     <Content Include="Scripts\External\jquery-3.3.1.min.js" />
     <Content Include="Scripts\External\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\External\knockout-3.4.2.js" />
     <Content Include="Scripts\External\knockout.mapping-latest.debug.js" />
     <Content Include="Scripts\External\knockout.mapping-latest.js" />
+    <Content Include="Scripts\External\knockout.validation.js" />
+    <Content Include="Scripts\External\knockout.validation.min.js" />
+    <Content Include="Scripts\External\moment.min.js" />
     <Content Include="Scripts\External\popper.js" />
     <Content Include="Scripts\External\popper.min.js" />
     <Content Include="Scripts\Main\ajax-global.js" />
     <Content Include="Scripts\Main\ko-extentions.js" />
     <Content Include="Scripts\Main\loading-spinner.js" />
+    <Content Include="Scripts\Main\modal.js" />
     <Content Include="Scripts\Main\nav-menu.js" />
     <Content Include="Scripts\Views\Books\book-details.js" />
     <Content Include="Scripts\Views\Books\book-list.js" />
@@ -133,6 +139,8 @@
     <Content Include="Styles\Bootstrap\bootstrap-reboot.min.css" />
     <Content Include="Styles\Bootstrap\bootstrap.css" />
     <Content Include="Styles\Bootstrap\bootstrap.min.css" />
+    <Content Include="Styles\Bootstrap-datepicker\gijgo.css" />
+    <Content Include="Styles\Bootstrap-datepicker\gijgo.min.css" />
     <Content Include="Styles\FontAwesome\css\fa-brands.css" />
     <Content Include="Styles\FontAwesome\css\fa-brands.min.css" />
     <Content Include="Styles\FontAwesome\css\fa-regular.css" />
@@ -241,6 +249,9 @@
     <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.woff" />
     <Content Include="Styles\FontAwesome\webfonts\fa-solid-900.woff2" />
     <Content Include="Views\Books\_Details.cshtml" />
+    <Content Include="Views\Shared\_NavMenu.cshtml" />
+    <Content Include="Views\Shared\Modals\_Confirmation.cshtml" />
+    <Content Include="Views\Shared\_Modals.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

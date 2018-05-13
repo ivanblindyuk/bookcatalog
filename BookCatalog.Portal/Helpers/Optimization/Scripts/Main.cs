@@ -16,7 +16,8 @@ namespace BookCatalog.Portal.Helpers.Optimization.Scripts
                             "~/Scripts/Main/ko-extentions.js",
                             "~/Scripts/Main/nav-menu.js",
                             "~/Scripts/Main/loading-spinner.js",
-                            "~/Scripts/Main/ajax-global.js"
+                            "~/Scripts/Main/ajax-global.js",
+                            "~/Scripts/Main/modal.js"
                             )
                 );
         }

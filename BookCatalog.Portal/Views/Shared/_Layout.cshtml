@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <link href="~/Styles/Bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Bootstrap-datepicker/gijgo.css" rel="stylesheet" />
     <link href="~/Styles/FontAwesome/css/fontawesome-all.css" rel="stylesheet" />
     <link href="~/Styles/WaitMe/waitMe.css" rel="stylesheet" />
     @System.Web.Optimization.Styles.Render("~/bundles/styles/main")
@@ -14,42 +15,34 @@
     <script src="~/Scripts/External/jquery-3.3.1.js"></script>
     <script src="~/Scripts/External/popper.js"></script>
     <script src="~/Scripts/Bootstrap/bootstrap.js"></script>
+    <script src="~/Scripts/External/gijgo.js"></script>
     <script src="~/Scripts/External/knockout-3.4.2.js"></script>
     <script src="~/Scripts/External/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/External/knockout.validation.js"></script>
     <script src="~/Styles/WaitMe/waitMe.js"></script>
+    <script src="~/Scripts/External/moment.min.js"></script>
     @System.Web.Optimization.Scripts.Render("~/bundles/scripts/main")
 
     <title>Book catalog</title>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-blink">
-            @Html.ActionLink("Book catalog", "List", "Books", null, new { @class = "navbar-brand" })
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu"
-                    aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="nav-menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        @Html.ActionLink("Books", "List", "Books", null,
-                            new { @class = "nav-link", data_bind = "css: { active: Active() == NavMenu.ITEMS.Books }" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Authors", "List", "Authors", null, 
-                            new { @class = "nav-link", data_bind = "css: { active: Active() == NavMenu.ITEMS.Authors }" })
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        @Html.Partial("_NavMenu")
     </header>
     <content>
         <div class="m-2">
             @RenderBody()
         </div>
     </content>
+
+    @Html.Partial("_Modals")
+
     <script>
-        NavMenu.Initialize();
+        $('[data-role="datepicker"]').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            format: 'dd.mm.yyyy'
+        });
     </script>
 </body>
 </html>

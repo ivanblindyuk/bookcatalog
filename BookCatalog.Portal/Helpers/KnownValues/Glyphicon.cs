@@ -24,6 +24,9 @@ namespace BookCatalog.Portal.Helpers.KnownValues
         Edit,
 
         [Display(Name = "trash")]
-        Delete
+        Delete,
+
+        [Display(Name = "calendar")]
+        Date
     }
 }
