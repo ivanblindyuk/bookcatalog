@@ -19,6 +19,7 @@ namespace BookCatalog.Portal.Helpers.Extentions
             i.MergeAttributes(attrs);
 
             i.AddCssClass("fas");
+            i.AddCssClass("fa-fw");
             i.AddCssClass("fa-" + icon.ToStringValue());
 
             return MvcHtmlString.Create(i.ToString());

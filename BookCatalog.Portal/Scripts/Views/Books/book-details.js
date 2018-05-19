@@ -9,12 +9,14 @@
     me.deleteUrl = "/Books/Delete";
     me.getUrl = "/Books/Get";
 
+    me.validator = null;
+
     me.VM = {
         IsVisible: ko.observable(false),
         RankingRange: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
 
         Id: ko.observable(0),
-        Title: ko.observable().extend({ required: true }),
+        Title: ko.observable(),
         ReleaseDate: ko.observable(null),
         Ranking: ko.observable(null),
         PageCount: ko.observable(null),
@@ -28,6 +30,8 @@
         me.VM.Ranking(null);
         me.VM.PageCount(null);
         me.VM.Authors([]);
+
+        me.validator.HideMessages();
     };
 
     me.Show = function () {
@@ -40,8 +44,7 @@
     };
 
     me.Save = function () {
-        if (!me.IsValid()) {
-            me.Validate();
+        if (!me.validator.IsValid()) {
             return;
         }
 
@@ -127,17 +130,14 @@
     };
 
     var initializeValidation = function () {
-        me.VMErrors = ko.validation.group(me.VM);
-    };
+        me.validator = new modelValidation(me.VM);
 
-    me.IsValid = function () {
-        return me.VMErrors().length === 0;
+        me.validator.Rules.Required(me.VM.Title, "Book title is required");
+        me.validator.Rules.Date(me.VM.ReleaseDate);
+        me.validator.Rules.Digit(me.VM.PageCount, "Invalid number");
+        me.validator.Rules.Between(me.VM.PageCount, 1, 9999);
     };
-
-    me.Validate = function () {
-        me.VMErrors.showAllMessages();
-    };
-
+    
     me.Initialize = function () {
         bindEvents();
         initializeValidation();

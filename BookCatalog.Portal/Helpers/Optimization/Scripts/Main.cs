@@ -13,7 +13,8 @@ namespace BookCatalog.Portal.Helpers.Optimization.Scripts
             bundles.Add(
                 new ScriptBundle("~/bundles/scripts/main")
                     .Include(
-                            "~/Scripts/Main/ko-extentions.js",
+                            "~/Scripts/Main/config.js",
+                            "~/Scripts/Main/validation.js",
                             "~/Scripts/Main/nav-menu.js",
                             "~/Scripts/Main/loading-spinner.js",
                             "~/Scripts/Main/ajax-global.js",

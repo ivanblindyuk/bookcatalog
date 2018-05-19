@@ -3,13 +3,17 @@
 
 <form id="frmBookDetails" onsubmit="return false" data-bind="fadeVisible: IsVisible">
     <div class="form-row border">
-        <div class="form-group col-md-3">
-            <label for="txtTitle">Title</label>
-            <input type="text" id="txtTitle" class="form-control" data-bind="value: Title">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="txtTitle">Title</label>
+                <input type="text" id="txtTitle" class="form-control" data-bind="value: Title">
+            </div>
         </div>
-        <div class="form-group col-md-2">
-            <label for="txtReleaseDate">Release Date</label>
-            <input id="txtReleaseDate" data-role="datepicker" data-bind="value: ReleaseDate" />
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtReleaseDate">Release Date</label>
+                <input id="txtReleaseDate" data-role="datepicker" data-bind="value: ReleaseDate" />
+            </div>
         </div>
         <div class="form-group col-md-1">
             <label for="txtRanking">Ranking</label>

@@ -19,13 +19,17 @@
     <script src="~/Scripts/External/knockout-3.4.2.js"></script>
     <script src="~/Scripts/External/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/External/knockout.validation.js"></script>
-    <script src="~/Styles/WaitMe/waitMe.js"></script>
+    <script src="~/Scripts/External/waitMe.js"></script>
     <script src="~/Scripts/External/moment.min.js"></script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/scripts/ko")
     @System.Web.Optimization.Scripts.Render("~/bundles/scripts/main")
 
     <title>Book catalog</title>
 </head>
 <body>
+
+    @Html.Partial("_Validation")
+
     <header>
         @Html.Partial("_NavMenu")
     </header>
@@ -38,11 +42,7 @@
     @Html.Partial("_Modals")
 
     <script>
-        $('[data-role="datepicker"]').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            format: 'dd.mm.yyyy'
-        });
+        Config.Layout();
     </script>
 </body>
 </html>

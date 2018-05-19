@@ -18,6 +18,7 @@ namespace BookCatalog.Portal
 
         static void RegisterScriptBundles(BundleCollection bundles)
         {
+            ScriptBundles.KO.RegisterBundle(bundles);
             ScriptBundles.Main.RegisterBundle(bundles);
             ScriptBundles.Books.RegisterBundles(bundles);
             ScriptBundles.Authors.RegisterBundles(bundles);

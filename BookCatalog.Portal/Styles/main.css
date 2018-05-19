@@ -1,3 +1,14 @@
 ﻿.bg-blink{
     background-color: #e3f2fd;
 }
+
+.form-control.is-invalid ~ .input-group-append > .btn{
+    border-top-color: #dc3545;
+    border-right-color: #dc3545;
+    border-bottom-color: #dc3545;
+}
+
+[role='wrapper'].gj-datepicker .input-group-append > .btn{
+    border-bottom-right-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}

@@ -20,7 +20,7 @@ namespace BookCatalog.Portal.Helpers.KnownValues
         [Display(Name = "times")]
         Cancel,
 
-        [Display(Name = "edit")]
+        [Display(Name = "pencil-alt")]
         Edit,
 
         [Display(Name = "trash")]

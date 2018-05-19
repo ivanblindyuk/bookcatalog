@@ -1,4 +1,4 @@
-﻿ko.bindingHandlers.fadeVisible = {
+﻿ko.bindingHandlers["fadeVisible"] = {
     init: function (element, valueAccessor) {
         // Initially set the element to be instantly visible/hidden depending on the value
         var value = valueAccessor();

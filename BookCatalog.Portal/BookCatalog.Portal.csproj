@@ -126,11 +126,15 @@
     <Content Include="Scripts\External\moment.min.js" />
     <Content Include="Scripts\External\popper.js" />
     <Content Include="Scripts\External\popper.min.js" />
+    <Content Include="Scripts\KO\bindings.js" />
+    <Content Include="Scripts\KO\settings.js" />
+    <Content Include="Scripts\KO\validation-rules.js" />
     <Content Include="Scripts\Main\ajax-global.js" />
-    <Content Include="Scripts\Main\ko-extentions.js" />
     <Content Include="Scripts\Main\loading-spinner.js" />
     <Content Include="Scripts\Main\modal.js" />
     <Content Include="Scripts\Main\nav-menu.js" />
+    <Content Include="Scripts\Main\config.js" />
+    <Content Include="Scripts\Main\validation.js" />
     <Content Include="Scripts\Views\Books\book-details.js" />
     <Content Include="Scripts\Views\Books\book-list.js" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.css" />
@@ -157,9 +161,9 @@
     <Content Include="Styles\main.css" />
     <Content Include="Styles\WaitMe\img.svg" />
     <Content Include="Styles\WaitMe\waitMe.css" />
-    <Content Include="Styles\WaitMe\waitMe.js" />
+    <Content Include="Scripts\External\waitMe.js" />
     <Content Include="Styles\WaitMe\waitMe.min.css" />
-    <Content Include="Styles\WaitMe\waitMe.min.js" />
+    <Content Include="Scripts\External\waitMe.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +180,7 @@
     <Compile Include="Helpers\KnownValues\Glyphicon.cs" />
     <Compile Include="Helpers\Optimization\Scripts\Authors.cs" />
     <Compile Include="Helpers\Optimization\Scripts\Books.cs" />
+    <Compile Include="Helpers\Optimization\Scripts\KO.cs" />
     <Compile Include="Helpers\Optimization\Scripts\Main.cs" />
     <Compile Include="Helpers\Optimization\Styles\Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -252,6 +257,7 @@
     <Content Include="Views\Shared\_NavMenu.cshtml" />
     <Content Include="Views\Shared\Modals\_Confirmation.cshtml" />
     <Content Include="Views\Shared\_Modals.cshtml" />
+    <Content Include="Views\Shared\_Validation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
