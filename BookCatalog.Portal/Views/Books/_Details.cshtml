@@ -3,7 +3,7 @@
 
 <form id="frmBookDetails" onsubmit="return false" data-bind="fadeVisible: IsVisible">
     <div class="form-row border">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label for="txtTitle">Title</label>
                 <input type="text" id="txtTitle" class="form-control" data-bind="value: Title">
@@ -15,23 +15,65 @@
                 <input id="txtReleaseDate" data-role="datepicker" data-bind="value: ReleaseDate" />
             </div>
         </div>
-        <div class="form-group col-md-1">
-            <label for="txtRanking">Ranking</label>
-            <select class="form-control" id="txtRanking" data-bind="value: Ranking, options: RankingRange, optionsCaption: ''"></select>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="txtRanking">Ranking</label>
+                <select class="form-control" id="txtRanking" data-bind="value: Ranking, options: RankingRange, optionsCaption: ''"></select>
+            </div>
         </div>
-        <div class="form-group col-md-1">
-            <label for="txtPageCount">Page Count</label>
-            <input type="text" class="form-control" id="txtPageCount" data-bind="value: PageCount">
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="txtPageCount">Pages</label>
+                <input type="text" class="form-control" id="txtPageCount" data-bind="value: PageCount">
+            </div>
         </div>
-        <div class="form-group col-md-2">
-            <label for="txtAuthors">Authors</label>
-            <input type="text" class="form-control" id="txtAuthors" data-bind="value: Authors">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="txtAuthors">Authors</label>
+                <input type="text" class="form-control" id="txtAuthors" data-bind="value: Authors">
+            </div>
         </div>
-        <div class="form-group col-md-1">
-            @Html.ButtonGlyphicon("Save", Glyphicon.Save, new { id = "btnSave", @class = "btn btn-outline-primary form-control" })
+        <div class="col-md-1">
+            <div class="row row-align">
+                <div class="col">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-align">
+                <div class="col">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        @Html.ButtonGlyphicon("Save", Glyphicon.Save, new { id = "btnSave", @class = "btn btn-outline-primary form-control" })
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group col-md-1">
-            @Html.ButtonGlyphicon("Cancel", Glyphicon.Cancel, new { id = "btnCancel", @class = "btn btn-outline-info form-control" })
+        <div class="col-md-1">
+            <div class="row row-align">
+                <div class="col">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-align">
+                <div class="col">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        @Html.ButtonGlyphicon("Cancel", Glyphicon.Cancel, new { id = "btnCancel", @class = "btn btn-outline-info form-control" })
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>

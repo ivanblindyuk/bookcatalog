@@ -13,7 +13,8 @@ namespace BookCatalog.Portal.Helpers.Optimization.Scripts
             bundles.Add(
                 new ScriptBundle("~/bundles/scripts/authors")
                     .Include(
-                            
+                            "~/Scripts/Views/Authors/author-details.js",
+                            "~/Scripts/Views/Authors/author-list.js"
                     )
                 );
         }

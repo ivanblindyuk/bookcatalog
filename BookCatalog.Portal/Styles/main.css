@@ -2,6 +2,12 @@
     background-color: #e3f2fd;
 }
 
+@media(max-width:768px) {
+    .row-align {
+        display: none;
+    }
+}
+
 .form-control.is-invalid ~ .input-group-append > .btn{
     border-top-color: #dc3545;
     border-right-color: #dc3545;

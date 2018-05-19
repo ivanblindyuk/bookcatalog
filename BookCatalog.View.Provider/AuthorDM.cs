@@ -56,6 +56,18 @@ namespace BookCatalog.View.Provider
             }
         }
 
+        public void Save(AuthorVM author)
+        {
+            if(author.Id == 0)
+            {
+                Create(author);
+            }
+            else
+            {
+                Update(author);
+            }
+        }
+
         public void Update(AuthorVM author)
         {
             using (var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))

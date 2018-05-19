@@ -76,7 +76,10 @@
                 ReleaseDate: {
                     update: function (options) {
                         if (options.data == null) return null;
-                        else return moment(options.data).format("DD.MM.YYYY");
+                        else {
+                            var date = gj.core.parseDate(options.data);
+                            return gj.core.formatDate(date, Config.KnownValues.DateFormat);
+                        }
                     }
                 }
             };

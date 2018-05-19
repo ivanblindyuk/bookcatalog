@@ -26,5 +26,6 @@
     (function (self) {
         self.BookDeleteConfirmation = "Are you sure about deleting this book?";
         self.BookEditConfirmation = "Data lost may occur. Are you sure?";
+        self.AuthorDeleteConfirmation = "Are you sure about deleting this author?";
     })(me.Messages);
 })(Modal);

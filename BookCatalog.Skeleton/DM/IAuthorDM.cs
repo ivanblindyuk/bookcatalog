@@ -11,6 +11,7 @@ namespace BookCatalog.Skeleton.DM
     {
         IEnumerable<AuthorVM> GetAuthors();
         AuthorVM GetAuthor(int id);
+        void Save(AuthorVM author);
         void Create(AuthorVM author);
         void Update(AuthorVM author);
         void Delete(int id);

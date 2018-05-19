@@ -1,0 +1,31 @@
+﻿@using BookCatalog.Portal.Helpers.Extentions;
+@using BookCatalog.Portal.Helpers.KnownValues;
+
+<form id="frmAuthorDetails" onsubmit="return false">
+    <div class="col-md-3 border">
+        <div class="form-group">
+            <label for="txtFirstName">First Name</label>
+            <input type="text" id="txtFirstName" class="form-control" data-bind="value: FirstName">
+        </div>
+        <div class="form-group">
+            <label for="txtLastName">Last Name</label>
+            <input id="txtLastName" class="form-control" data-bind="value: LastName" />
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    @Html.ButtonGlyphicon("Save", Glyphicon.Save, new { id = "btnSave", @class = "btn btn-outline-primary form-control" })
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    @Html.ButtonGlyphicon("Cancel", Glyphicon.Cancel, new { id = "btnCancel", @class = "btn btn-outline-info form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    AuthorDetails.Initialize();
+</script>

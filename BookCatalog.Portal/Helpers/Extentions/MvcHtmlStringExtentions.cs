@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using System.Web.Script.Serialization;
 
 namespace BookCatalog.Portal.Helpers.Extentions
 {
@@ -25,7 +26,7 @@ namespace BookCatalog.Portal.Helpers.Extentions
             return MvcHtmlString.Create(i.ToString());
         }
 
-        public static MvcHtmlString ActionGlyphiconLink(this HtmlHelper htmlHelper, string linkText, Glyphicon icon, string actionName, object htmlAttributes = null)
+        public static MvcHtmlString ActionGlyphiconLink(this HtmlHelper htmlHelper, string linkText, Glyphicon icon, string actionName, object routeValues, object htmlAttributes)
         {
             object icoHtmlAttributes = null;
             if (!string.IsNullOrEmpty(linkText)) icoHtmlAttributes = new { @class = "mr-1" };
@@ -34,7 +35,7 @@ namespace BookCatalog.Portal.Helpers.Extentions
             string glyphiconHtml = glyphicon.ToHtmlString();
                                     
             var urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
-            var url = urlHelper.Action(actionName: actionName);
+            var url = urlHelper.Action(actionName, routeValues);
             
             var a = new TagBuilder("a");
             a.InnerHtml = string.Format("{0}{1}", glyphiconHtml, linkText);
@@ -44,6 +45,11 @@ namespace BookCatalog.Portal.Helpers.Extentions
             a.MergeAttributes(attrs);
             
             return MvcHtmlString.Create(a.ToString());
+        }
+
+        public static MvcHtmlString ActionGlyphiconLink(this HtmlHelper htmlHelper, string linkText, Glyphicon icon, string actionName, object htmlAttributes = null)
+        {
+            return ActionGlyphiconLink(htmlHelper, linkText, icon, actionName, null, htmlAttributes);
         }
 
         public static MvcHtmlString ButtonGlyphicon(this HtmlHelper htmlHelper, string text, Glyphicon icon, object htmlAttributes = null)
@@ -61,6 +67,12 @@ namespace BookCatalog.Portal.Helpers.Extentions
             button.MergeAttributes(attrs);
 
             return MvcHtmlString.Create(button.ToString());
+        }
+
+        public static string AsJson(this HtmlHelper htmlHelper, object model)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            return serializer.Serialize(model);
         }
     }
 }

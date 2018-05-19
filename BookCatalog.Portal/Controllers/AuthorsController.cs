@@ -25,17 +25,6 @@ namespace BookCatalog.Portal.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Create(AuthorVM author)
-        {
-            using (var authorDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
-            {
-                authorDM.Create(author);
-
-                return RedirectToAction("List");
-            }
-        }
-
         public ActionResult Edit(int id)
         {
             using (var authorDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
@@ -47,23 +36,20 @@ namespace BookCatalog.Portal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(AuthorVM author)
+        public void Save(AuthorVM author)
         {
             using (var authorDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
             {
-                authorDM.Update(author);
-
-                return RedirectToAction("List");
+                authorDM.Save(author);
             }
         }
 
-        public ActionResult Delete(int id)
+        [HttpPost]
+        public void Delete(int id)
         {
             using (var authorDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
             {
                 authorDM.Delete(id);
-
-                return RedirectToAction("List");
             }
         }
     }

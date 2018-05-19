@@ -3,6 +3,8 @@
 
 @model IEnumerable<BookCatalog.View.Model.AuthorVM>
 
+@System.Web.Optimization.Scripts.Render("~/bundles/scripts/authors")
+
 <p>
     @Html.ActionGlyphiconLink("New author", Glyphicon.Add, "Create", new { @class = "btn btn-outline-success", role = "button" })
 </p>
@@ -27,8 +29,8 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionGlyphiconLink(null, Glyphicon.Edit, "Edit", new { id = item.Id }, new { key = item.Id, @class = "btn btn-outline-warning btn-edit" })
+                @Html.ButtonGlyphicon(null, Glyphicon.Delete, new { key = item.Id, @class = "btn btn-outline-danger btn-delete" })
             </td>
         </tr>
     }
@@ -36,4 +38,5 @@
 </table>
 <script>
     NavMenu.Activate(NavMenu.ITEMS.Authors);
+    AuthorList.Initialize();
 </script>
