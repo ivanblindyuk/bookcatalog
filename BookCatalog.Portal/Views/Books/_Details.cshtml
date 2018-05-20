@@ -30,7 +30,8 @@
         <div class="col-md-2">
             <div class="form-group">
                 <label for="txtAuthors">Authors</label>
-                <input type="text" class="form-control" id="txtAuthors" data-bind="value: Authors">
+                <select data-role="multiselect" multiple="multiple" class="form-control" id="txtAuthors"
+                        data-bind="selectedOptions: Authors, options: AuthorsSource, optionsText: 'label', optionsValue: 'value'"></select>
             </div>
         </div>
         <div class="col-md-1">

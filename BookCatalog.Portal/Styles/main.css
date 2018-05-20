@@ -2,6 +2,23 @@
     background-color: #e3f2fd;
 }
 
+.table {
+    border-spacing: 0;
+}
+
+.table th,
+.table td{
+    padding: 0.5rem;
+}
+
+.table .btn-toolbar{
+    width: 96px;
+}
+
+.table .btn-toolbar .btn:not(:last-child){
+    margin-right: 0.25rem;
+}
+
 @media(max-width:768px) {
     .row-align {
         display: none;

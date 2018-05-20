@@ -6,6 +6,7 @@
     };
 
     me.Plugins = {};
+    me.Convert = {};
 
     me.Layout = function () {
         me.Plugins.DatePicker.Init();
@@ -30,3 +31,12 @@
         }
     };
 })(Config.Plugins);
+
+(function (me) {
+    me.Date = {
+        JsonToString: function (data) {
+            var date = gj.core.parseDate(data);
+            return gj.core.formatDate(date, Config.KnownValues.DateFormat);
+        }
+    };
+})(Config.Convert);

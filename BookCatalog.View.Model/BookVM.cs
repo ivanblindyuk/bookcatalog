@@ -13,6 +13,6 @@ namespace BookCatalog.View.Model
         public DateTime? ReleaseDate { get; set; }
         public int? Ranking { get; set; }
         public int? PageCount { get; set; }
-        IEnumerable<AuthorVM> Authors { get; set; }
+        public IEnumerable<AuthorVM> Authors { get; set; }
     }
 }

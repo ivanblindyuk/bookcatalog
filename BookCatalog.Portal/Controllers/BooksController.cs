@@ -12,12 +12,7 @@ namespace BookCatalog.Portal.Controllers
     {
         public ActionResult List()
         {
-            using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
-            {
-                var model = bookDM.GetBooks();
-
-                return View(model);
-            }
+            return View();
         }
 
         [HttpPost]
@@ -45,6 +40,16 @@ namespace BookCatalog.Portal.Controllers
             using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
             {
                 bookDM.Delete(id);
+            }
+        }
+        
+        public JsonResult GetAll()
+        {
+            using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
+            {
+                var model = bookDM.GetBooks();
+
+                return ToJson(model);
             }
         }
     }

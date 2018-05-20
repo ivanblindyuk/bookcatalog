@@ -14,6 +14,7 @@
     me.VM = {
         IsVisible: ko.observable(false),
         RankingRange: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        AuthorsSource: ko.observableArray([{ label: "1", value: 1 }, { label: "2", value: 2 }]),
 
         Id: ko.observable(0),
         Title: ko.observable(),
@@ -56,6 +57,7 @@
 
         $.post(me.saveUrl, model, function () {
             $(document).trigger("details.hide");
+            $(document).trigger("details.saved");
         });
     };
 
@@ -77,8 +79,7 @@
                     update: function (options) {
                         if (options.data == null) return null;
                         else {
-                            var date = gj.core.parseDate(options.data);
-                            return gj.core.formatDate(date, Config.KnownValues.DateFormat);
+                            return Config.Convert.Date.JsonToString(options.data);
                         }
                     }
                 }
@@ -103,6 +104,8 @@
                 if (me.VM.IsVisible())
                     $(document).trigger("details.hide");
             }
+
+            $(document).trigger("details.deleted");
         });
     };
 
@@ -140,7 +143,7 @@
         me.validator.Rules.Digit(me.VM.PageCount, "Invalid number");
         me.validator.Rules.Between(me.VM.PageCount, 1, 9999);
     };
-    
+
     me.Initialize = function () {
         bindEvents();
         initializeValidation();

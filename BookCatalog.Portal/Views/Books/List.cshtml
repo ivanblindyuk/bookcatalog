@@ -1,8 +1,6 @@
 ﻿@using BookCatalog.Portal.Helpers.Extentions
 @using BookCatalog.Portal.Helpers.KnownValues
 
-@model IEnumerable<BookCatalog.View.Model.BookVM>
-
 @System.Web.Optimization.Scripts.Render("~/bundles/scripts/books")
 
 <p>
@@ -11,46 +9,31 @@
 <p>
     @Html.Partial("_Details")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ranking)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PageCount)
-        </th>
-        <th></th>
-    </tr>
+<table id="tblBooks" class="table table-striped table-bordered w-100">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Release Date
+            </th>
+            <th>
+                Ranking
+            </th>
+            <th>
+                Pages
+            </th>
+            <th>
+                Authors
+            </th>
+            <th>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ranking)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PageCount)
-        </td>
-        <td>
-            @Html.ButtonGlyphicon(null, Glyphicon.Edit, new { key = item.Id, @class = "btn btn-outline-warning btn-edit" })
-            @Html.ButtonGlyphicon(null, Glyphicon.Delete, new { key = item.Id, @class = "btn btn-outline-danger btn-delete" })
-        </td>
-    </tr>
-    }
-
+            </th>
+        </tr>
+    </thead>
 </table>
+
 <script>
     NavMenu.Activate(NavMenu.ITEMS.Books);
     BookList.Initialize();

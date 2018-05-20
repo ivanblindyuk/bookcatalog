@@ -109,11 +109,28 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Main\data-grid.js" />
+    <Content Include="Styles\DataTable\css\dataTables.bootstrap4.css" />
+    <Content Include="Styles\DataTable\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Styles\DataTable\images\sort_asc.png" />
+    <Content Include="Styles\DataTable\images\sort_asc_disabled.png" />
+    <Content Include="Styles\DataTable\images\sort_both.png" />
+    <Content Include="Styles\DataTable\images\sort_desc.png" />
+    <Content Include="Styles\DataTable\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTable\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTable\jquery.dataTables.min.js" />
+    <Content Include="Styles\DataTable\css\select.bootstrap4.css" />
+    <Content Include="Styles\DataTable\css\select.bootstrap4.min.css" />
+    <Content Include="Scripts\DataTable\dataTables.select.js" />
+    <Content Include="Scripts\DataTable\dataTables.select.min.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
-    <Content Include="Scripts\External\datatables.js" />
+    <Content Include="Scripts\External\bootstrap-multiselect.js" />
+    <Content Include="Scripts\External\bootstrap-multiselect.min.js" />
     <Content Include="Scripts\External\gijgo.js" />
     <Content Include="Scripts\External\gijgo.min.js" />
     <Content Include="Scripts\External\jquery-3.3.1.js" />
@@ -140,6 +157,7 @@
     <Content Include="Scripts\Views\Authors\author-list.js" />
     <Content Include="Scripts\Views\Books\book-details.js" />
     <Content Include="Scripts\Views\Books\book-list.js" />
+    <Content Include="Styles\Bootstrap-multiselect\bootstrap-multiselect.css" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.css" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Styles\Bootstrap\bootstrap-reboot.css" />
@@ -148,7 +166,6 @@
     <Content Include="Styles\Bootstrap\bootstrap.min.css" />
     <Content Include="Styles\Bootstrap-datepicker\gijgo.css" />
     <Content Include="Styles\Bootstrap-datepicker\gijgo.min.css" />
-    <Content Include="Styles\datatables.css" />
     <Content Include="Styles\FontAwesome\css\fa-brands.css" />
     <Content Include="Styles\FontAwesome\css\fa-brands.min.css" />
     <Content Include="Styles\FontAwesome\css\fa-regular.css" />
