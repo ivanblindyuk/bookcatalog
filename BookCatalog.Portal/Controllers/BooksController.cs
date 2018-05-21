@@ -1,5 +1,6 @@
 ﻿using BookCatalog.Skeleton.DM;
 using BookCatalog.View.Model;
+using BookCatalog.View.Model.DataTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,14 +43,23 @@ namespace BookCatalog.Portal.Controllers
                 bookDM.Delete(id);
             }
         }
-        
-        public JsonResult GetAll()
+
+        [HttpPost]
+        public JsonResult GetAll(RequestVM request)
         {
             using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
             {
-                var model = bookDM.GetBooks();
+                int total;
+                var model = bookDM.GetBooks(request, out total);
 
-                return ToJson(model);
+                return ToJson(
+                    new ResponseVM
+                    {
+                        data = model,
+                        draw = request.draw,
+                        recordsTotal = total,
+                        recordsFiltered = total
+                    });
             }
         }
     }

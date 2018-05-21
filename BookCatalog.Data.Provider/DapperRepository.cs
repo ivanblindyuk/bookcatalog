@@ -98,11 +98,11 @@ namespace BookCatalog.Data.Provider
             }
         }
 
-        protected IEnumerable<T> ExecuteMultiSP<T>(string spName)
+        protected IEnumerable<T> ExecuteMultiSP<T>(string spName, object param = null)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
-                return db.Query<T>(spName, commandType: CommandType.StoredProcedure);
+                return db.Query<T>(spName, param: param, commandType: CommandType.StoredProcedure);
             }
         }
 

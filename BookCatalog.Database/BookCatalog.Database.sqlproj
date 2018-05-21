@@ -59,11 +59,13 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="PostDeployment" />
+    <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblAuthors.sql" />
     <Build Include="Tables\tblBooks.sql" />
     <Build Include="Tables\tblBooks_Authors.sql" />
+    <Build Include="StoredProcedures\uspSelectBooks.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeployment\Insert_tblAuthors.sql" />

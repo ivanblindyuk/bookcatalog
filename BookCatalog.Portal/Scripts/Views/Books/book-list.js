@@ -51,17 +51,20 @@
     var initializeDatatable = function () {
         grid = DataGrid.Initialize(me.tblId,
         {
+            processing: true,
+            serverSide: true,
             ajax: {
                 url: me.getAllUrl,
-                dataSrc: ''
+                dataSrc: 'data',
+                type: "POST"
             },
             columns: [
-                { "data": "Title" },
-                { "data": "ReleaseDate" },
-                { "data": "Ranking" },
-                { "data": "PageCount" },
-                { "data": "Authors" },
-                { "data": "Id" }
+                { "data": "Title", "title": "Title" },
+                { "data": "ReleaseDate", "title": "Release Date" },
+                { "data": "Ranking", "title": "Ranking" },
+                { "data": "PageCount", "title": "Pages" },
+                { "data": "Authors", "title": "Authors", "orderable": false },
+                { "data": "Id", "title": "", "orderable": false }
             ],
             columnDefs: [
             {
@@ -74,7 +77,6 @@
                 "parameters": {
                     "renders": [DataGrid.Renders.EditButton, DataGrid.Renders.DeleteButton]
                 },
-                "sorting": false,
                 "width": "9%"
             },
             {
