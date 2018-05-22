@@ -13,12 +13,12 @@ namespace BookCatalog.Resolution.Mapping.Resolvers
     {
         public bool? Resolve(RequestVM source, RequestEM destination, bool? destMember, ResolutionContext context)
         {
-            if (source.sorting == null || string.IsNullOrEmpty(source.sorting.direction))
+            if (source.order == null || source.order.Length == 0 || string.IsNullOrEmpty(source.order[0].dir))
                 return null;
 
-            switch (source.sorting.direction)
+            switch (source.order[0].dir)
             {
-                case "descending": return true;
+                case "desc": return true;
                 default: return false;
             }
         }

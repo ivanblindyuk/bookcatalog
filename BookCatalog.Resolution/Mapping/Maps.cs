@@ -31,9 +31,11 @@ namespace BookCatalog.Resolution.Mapping
             config.CreateMap<RequestVM, RequestEM>()
                 .ForMember(d => d.Offset, opt => opt.MapFrom(src => src.start))
                 .ForMember(d => d.Length, opt => opt.MapFrom(src => src.length))
-                .ForMember(d => d.OrderBy, opt => opt.MapFrom(src => src.sorting == null ? (int?)null : src.sorting.column))
+                .ForMember(d => d.OrderBy, opt => opt.ResolveUsing<GridRequestOrderColumnResolver>())
                 .ForMember(d => d.IsDescending, opt => opt.ResolveUsing<GridRequestOrderDirectionResolver>())
                 .ForMember(d => d.SearchExpression, opt => opt.MapFrom(src => src.search.value));
+
+            config.CreateMap<GridAuthor, GridAuthorVM>();
         }
     }
 }

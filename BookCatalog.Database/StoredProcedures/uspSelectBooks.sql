@@ -4,12 +4,12 @@
 	@Length int,
 	@OrderBy int,
 	@OrderDir bit,
-	@Total int out
+	@Total int = 0 out
 AS
 BEGIN
 	DECLARE @Result TABLE(
 		[Id] int,
-		[Title] varchar(max),
+		[Title] nvarchar(max),
 		[ReleaseDate] date,
 		[Ranking] int,
 		[PageCount] int)

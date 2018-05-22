@@ -8,6 +8,8 @@ using BookCatalog.View.Model;
 using BookCatalog.Skeleton.Repositories;
 using BookCatalog.Data.Model;
 using BookCatalog.Skeleton.Core;
+using BookCatalog.View.Model.DataTable;
+using BookCatalog.Data.Model.Grid;
 
 namespace BookCatalog.View.Provider
 {
@@ -46,13 +48,16 @@ namespace BookCatalog.View.Provider
             }
         }
 
-        public IEnumerable<AuthorVM> GetAuthors()
+        public IEnumerable<GridAuthorVM> GetAuthors(RequestVM request, out int total)
         {
             using (var authorsRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
             {
-                var authors = authorsRepo.GetAll();
+                var req = BCContext.Mapper.Map<RequestVM, RequestEM>(request);
+                var grid = authorsRepo.GetAuthors(req);
 
-                return BCContext.Mapper.Map<IEnumerable<Author>, IEnumerable<AuthorVM>>(authors);
+                total = grid.Total;
+
+                return BCContext.Mapper.Map<IEnumerable<GridAuthor>, IEnumerable<GridAuthorVM>>(grid.Rows);
             }
         }
 

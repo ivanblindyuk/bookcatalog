@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BookCatalog.Data.Model;
 using BookCatalog.Skeleton.Core;
+using BookCatalog.Data.Model.Grid;
 
 namespace BookCatalog.Data.Provider
 {
@@ -16,9 +17,9 @@ namespace BookCatalog.Data.Provider
         {
         }
 
-        public IEnumerable<Author> GetAll()
+        public ResponseEM<GridAuthor> GetAuthors(RequestEM request)
         {
-            return ExecuteMultiQuery<Author>("Select * from tblAuthors");
+            return GetGrid<GridAuthor>(request, "uspSelectAuthors");
         }
     }
 }

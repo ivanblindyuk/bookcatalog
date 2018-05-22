@@ -1,5 +1,6 @@
 ﻿using BookCatalog.Skeleton.DM;
 using BookCatalog.View.Model;
+using BookCatalog.View.Model.DataTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,7 @@ namespace BookCatalog.Portal.Controllers
         {
             using (var dm = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
             {
-                var model = dm.GetAuthors();
-
-                return View(model);
+                return View();
             }
         }
 
@@ -50,6 +49,18 @@ namespace BookCatalog.Portal.Controllers
             using (var authorDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
             {
                 authorDM.Delete(id);
+            }
+        }
+        
+        [HttpPost]
+        public JsonResult GetAll(RequestVM request)
+        {
+            using (var bookDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
+            {
+                int total;
+                var model = bookDM.GetAuthors(request, out total);
+
+                return ToGridJson(model, total, request.draw);
             }
         }
     }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AuthorVM.cs" />
     <Compile Include="BookVM.cs" />
+    <Compile Include="DataTable\GridAuthorVM.cs" />
     <Compile Include="DataTable\RequestVM.cs" />
     <Compile Include="DataTable\ResponseVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

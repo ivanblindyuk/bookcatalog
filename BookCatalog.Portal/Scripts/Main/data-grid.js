@@ -32,7 +32,7 @@
         var parameters = getParameters(meta.settings.oInit.columnDefs, meta.col);
         if (parameters == null) return '';
 
-        var url = parameters.editUrl;
+        var url = parameters.editUrl + "/" + data;
 
         return '<a class="btn btn-outline-warning btn-edit" href="' + url + '" key="' + data + '"><i class="fa-pencil-alt fa-fw fas"></i></a>';
     };

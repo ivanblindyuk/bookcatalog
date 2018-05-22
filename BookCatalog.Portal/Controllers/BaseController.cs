@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Text;
+using BookCatalog.View.Model.DataTable;
 
 namespace BookCatalog.Portal.Controllers
 {
@@ -38,6 +39,18 @@ namespace BookCatalog.Portal.Controllers
         protected JsonResult ToJson(object data)
         {
             return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        protected JsonResult ToGridJson(object data, int total, int draw)
+        {
+            return ToJson(
+                    new ResponseVM
+                    {
+                        data = data,
+                        draw = draw,
+                        recordsTotal = total,
+                        recordsFiltered = total
+                    });
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BookCatalog.View.Model.DataTable
         public int start { get; set; }
         public int length { get; set; }
         public Search search { get; set; }
-        public Sorting sorting { get; set; }
+        public Sorting[] order { get; set; }
 
         public class Search
         {
@@ -23,7 +23,7 @@ namespace BookCatalog.View.Model.DataTable
         public class Sorting
         {
             public int column { get; set; }
-            public string direction { get; set; }
+            public string dir { get; set; }
         }
     }
 }

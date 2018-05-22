@@ -65,9 +65,11 @@ namespace BookCatalog.View.Provider
             using(var bookRepo = BCContext.Resolver.Resolve<IBookRepository>(BCContext.DbContext))
             {
                 var req = BCContext.Mapper.Map<RequestVM, RequestEM>(request);
-                var books = bookRepo.GetBooks(req, out total);
+                var grid = bookRepo.GetBooks(req);
 
-                return BCContext.Mapper.Map<IEnumerable<Book>, IEnumerable<BookVM>>(books);
+                total = grid.Total;
+
+                return BCContext.Mapper.Map<IEnumerable<Book>, IEnumerable<BookVM>>(grid.Rows);
             }
         }
 

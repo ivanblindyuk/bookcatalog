@@ -1,4 +1,5 @@
 ﻿using BookCatalog.View.Model;
+using BookCatalog.View.Model.DataTable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace BookCatalog.Skeleton.DM
 {
     public interface IAuthorDM : IBaseDM
     {
-        IEnumerable<AuthorVM> GetAuthors();
+        IEnumerable<GridAuthorVM> GetAuthors(RequestVM request, out int total);
         AuthorVM GetAuthor(int id);
         void Save(AuthorVM author);
         void Create(AuthorVM author);

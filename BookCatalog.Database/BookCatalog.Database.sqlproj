@@ -66,6 +66,7 @@
     <Build Include="Tables\tblBooks.sql" />
     <Build Include="Tables\tblBooks_Authors.sql" />
     <Build Include="StoredProcedures\uspSelectBooks.sql" />
+    <Build Include="StoredProcedures\uspSelectAuthors.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeployment\Insert_tblAuthors.sql" />

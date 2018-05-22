@@ -52,14 +52,7 @@ namespace BookCatalog.Portal.Controllers
                 int total;
                 var model = bookDM.GetBooks(request, out total);
 
-                return ToJson(
-                    new ResponseVM
-                    {
-                        data = model,
-                        draw = request.draw,
-                        recordsTotal = total,
-                        recordsFiltered = total
-                    });
+                return ToGridJson(model, total, request.draw);
             }
         }
     }

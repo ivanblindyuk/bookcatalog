@@ -12,6 +12,7 @@ using Dapper;
 using System.Configuration;
 using BookCatalog.Skeleton.Core;
 using Dapper.Contrib.Extensions;
+using BookCatalog.Data.Model.Grid;
 
 namespace BookCatalog.Data.Provider
 {
@@ -101,9 +102,31 @@ namespace BookCatalog.Data.Provider
         protected IEnumerable<T> ExecuteMultiSP<T>(string spName, object param = null)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
-            {
+            {                
                 return db.Query<T>(spName, param: param, commandType: CommandType.StoredProcedure);
             }
+        }
+
+        protected ResponseEM<T> GetGrid<T>(RequestEM request, string spName)
+            where T : class
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@Search", request.SearchExpression);
+            parameters.Add("@Offset", request.Offset);
+            parameters.Add("@Length", request.Length);
+            parameters.Add("@OrderBy", request.OrderBy);
+            parameters.Add("@OrderDir", request.IsDescending);
+            parameters.Add("@Total", 0, direction: ParameterDirection.Output);
+
+            var result = ExecuteMultiSP<T>(spName, param: parameters);
+            int total = parameters.Get<int>("@Total");
+
+            return new ResponseEM<T>
+            {
+                Total = total,
+                Rows = result
+            };
         }
 
         public void Dispose()

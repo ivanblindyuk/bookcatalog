@@ -1,4 +1,5 @@
 ﻿using BookCatalog.Data.Model;
+using BookCatalog.Data.Model.Grid;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace BookCatalog.Skeleton.Repositories
 {
     public interface IAuthorRepository : IDapperRepository<Author>
     {
-        IEnumerable<Author> GetAll();
+        ResponseEM<GridAuthor> GetAuthors(RequestEM request);
     }
 }
