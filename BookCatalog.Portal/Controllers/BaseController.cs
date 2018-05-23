@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Text;
-using BookCatalog.View.Model.DataTable;
+using BookCatalog.View.Model.Grid;
 
 namespace BookCatalog.Portal.Controllers
 {

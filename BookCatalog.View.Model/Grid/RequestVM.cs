@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookCatalog.View.Model.DataTable
+namespace BookCatalog.View.Model.Grid
 {
     public class RequestVM
     {

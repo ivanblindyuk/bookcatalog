@@ -43,6 +43,12 @@
         me.VM.IsVisible(false);
         me.EmptyfyModel();
     };
+    
+    me.Focus = function () {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500);
+    };
 
     me.Save = function () {
         if (!me.validator.IsValid()) {
@@ -89,6 +95,8 @@
 
             if (!me.VM.IsVisible())
                 $(document).trigger("details.show");
+
+            me.Focus();
         });
     };
 

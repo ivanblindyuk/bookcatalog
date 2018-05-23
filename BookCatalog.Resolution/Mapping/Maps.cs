@@ -2,7 +2,7 @@
 using BookCatalog.Data.Model;
 using BookCatalog.Data.Model.Grid;
 using BookCatalog.View.Model;
-using BookCatalog.View.Model.DataTable;
+using BookCatalog.View.Model.Grid;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +35,8 @@ namespace BookCatalog.Resolution.Mapping
                 .ForMember(d => d.IsDescending, opt => opt.ResolveUsing<GridRequestOrderDirectionResolver>())
                 .ForMember(d => d.SearchExpression, opt => opt.MapFrom(src => src.search.value));
 
-            config.CreateMap<GridAuthor, GridAuthorVM>();
+            config.CreateMap<Authors, AuthorsVM>();
+            config.CreateMap<Books, BooksVM>();
         }
     }
 }

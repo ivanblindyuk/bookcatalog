@@ -33,7 +33,7 @@ BEGIN
 	BEGIN
 		SELECT * FROM @Result
 		ORDER BY 
-			CASE WHEN @OrderBy IS NULL OR @OrderBy = 0 THEN [FirstName] END DESC,
+			CASE WHEN @OrderBy <> 1 THEN [FirstName] END DESC,
 			CASE WHEN @OrderBy = 1 THEN [LastName] END DESC
 		OFFSET @Offset ROWS FETCH NEXT @Length ROWS ONLY
 	END
@@ -41,7 +41,7 @@ BEGIN
 	BEGIN
 		SELECT * FROM @Result
 		ORDER BY 
-			CASE WHEN @OrderBy IS NULL OR @OrderBy = 0 THEN [FirstName] END ASC,
+			CASE WHEN @OrderBy <> 1 THEN [FirstName] END ASC,
 			CASE WHEN @OrderBy = 1 THEN [LastName] END ASC
 		OFFSET @Offset ROWS FETCH NEXT @Length ROWS ONLY
 	END

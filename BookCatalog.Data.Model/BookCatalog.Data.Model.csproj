@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
-    <Compile Include="Grid\GridAuthor.cs" />
+    <Compile Include="BookAuthor.cs" />
+    <Compile Include="Grid\Authors.cs" />
+    <Compile Include="Grid\Books.cs" />
     <Compile Include="Grid\RequestEM.cs" />
     <Compile Include="Grid\ResponseEM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

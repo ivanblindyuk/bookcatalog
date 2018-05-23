@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using BookCatalog.View.Model.DataTable;
+using BookCatalog.View.Model.Grid;
 using BookCatalog.Data.Model.Grid;
 
 namespace BookCatalog.Resolution.Mapping.Resolvers

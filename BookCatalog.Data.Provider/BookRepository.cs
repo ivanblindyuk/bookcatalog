@@ -26,9 +26,36 @@ namespace BookCatalog.Data.Provider
                                                 where ba.BookId = @BookId", new { BookId = bookId });
         }
 
-        public ResponseEM<Book> GetBooks(RequestEM request)
+        public ResponseEM<Books> GetBooks(RequestEM request)
         {
-            return GetGrid<Book>(request, "uspSelectBooks");
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@Search", request.SearchExpression);
+            parameters.Add("@Offset", request.Offset);
+            parameters.Add("@Length", request.Length);
+            parameters.Add("@OrderBy", request.OrderBy);
+            parameters.Add("@OrderDir", request.IsDescending);
+            parameters.Add("@Total", 0, direction: ParameterDirection.Output);
+
+            var result = ExecuteMultiSetSP<Books, BookAuthor>("uspSelectBooks", param: parameters);
+            int total = parameters.Get<int>("@Total");
+
+            result.Item1.ToList().ForEach(b =>
+                b.Authors = result.Item2
+                    .Where(a => a.BookId == b.Id)
+                    .Select(a => new Author
+                        {
+                            Id = a.AuthorId,
+                            FirstName = a.FirstName,
+                            LastName = a.LastName
+                        })
+                );
+
+            return new ResponseEM<Books>
+            {
+                Total = total,
+                Rows = result.Item1
+            };
         }
     }
 }

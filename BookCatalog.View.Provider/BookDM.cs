@@ -8,7 +8,7 @@ using BookCatalog.Skeleton.Core;
 using BookCatalog.Data.Model;
 using BookCatalog.Skeleton.Repositories;
 using BookCatalog.View.Model;
-using BookCatalog.View.Model.DataTable;
+using BookCatalog.View.Model.Grid;
 using BookCatalog.Data.Model.Grid;
 
 namespace BookCatalog.View.Provider
@@ -60,7 +60,7 @@ namespace BookCatalog.View.Provider
             }
         }
 
-        public IEnumerable<BookVM> GetBooks(RequestVM request, out int total)
+        public IEnumerable<BooksVM> GetBooks(RequestVM request, out int total)
         {
             using(var bookRepo = BCContext.Resolver.Resolve<IBookRepository>(BCContext.DbContext))
             {
@@ -69,7 +69,7 @@ namespace BookCatalog.View.Provider
 
                 total = grid.Total;
 
-                return BCContext.Mapper.Map<IEnumerable<Book>, IEnumerable<BookVM>>(grid.Rows);
+                return BCContext.Mapper.Map<IEnumerable<Books>, IEnumerable<BooksVM>>(grid.Rows);
             }
         }
 

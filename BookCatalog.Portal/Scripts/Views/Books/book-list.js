@@ -7,6 +7,7 @@
     me.btnDeleteClass = "btn-delete";
 
     me.getAllUrl = "/Books/GetAll";
+    me.editAuthorUrl = "/Authors/Edit";
 
     var grid = null;
 
@@ -17,12 +18,12 @@
     me.HideAddButton = function () {
         $("#" + me.btnAddId).hide();
     };
-
+    
     var bindEvents = function () {
         $("#" + me.btnAddId).click(function () {
             $(document).trigger("details.show");
         });
-        
+
         $(document).on("details.hide", function () {
             me.ShowAddButton();
         });
@@ -70,6 +71,27 @@
             {
                 "targets": 1,
                 "render": DataGrid.Renders.Date
+            },
+            {
+                "targets": 4,
+                "render": function (data, type, row) {
+                    if (data == null) return '';
+
+                    var authors = [];
+
+                    for (var i = 0; i < data.length; i++) {
+                        var firstName = '', lastName = '';
+
+                        if(data[i].FirstName != null) firstName = data[i].FirstName + ' ';
+                        if(data[i].LastName != null) lastName = data[i].LastName;
+
+                        var text = firstName + lastName;
+
+                        authors.push('<a href="' + me.editAuthorUrl + '/' + data[i].Id + '">' + text + '</a>');
+                    }
+
+                    return authors.join(', ');
+                }
             },
             {
                 "targets": 5,

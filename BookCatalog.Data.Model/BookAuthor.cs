@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookCatalog.Data.Model.Grid
+namespace BookCatalog.Data.Model
 {
-    public class GridAuthor
+    public class BookAuthor
     {
-        public int Id { get; set; }
+        public int BookId { get; set; }
+        public int AuthorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int BookCount { get; set; }
     }
 }

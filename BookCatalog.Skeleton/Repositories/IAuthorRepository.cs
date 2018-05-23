@@ -10,6 +10,6 @@ namespace BookCatalog.Skeleton.Repositories
 {
     public interface IAuthorRepository : IDapperRepository<Author>
     {
-        ResponseEM<GridAuthor> GetAuthors(RequestEM request);
+        ResponseEM<Authors> GetAuthors(RequestEM request);
     }
 }

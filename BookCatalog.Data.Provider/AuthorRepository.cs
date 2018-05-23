@@ -17,9 +17,9 @@ namespace BookCatalog.Data.Provider
         {
         }
 
-        public ResponseEM<GridAuthor> GetAuthors(RequestEM request)
+        public ResponseEM<Authors> GetAuthors(RequestEM request)
         {
-            return GetGrid<GridAuthor>(request, "uspSelectAuthors");
+            return GetGrid<Authors>(request, "uspSelectAuthors");
         }
     }
 }

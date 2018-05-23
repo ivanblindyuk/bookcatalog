@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BookCatalog.Data.Model.Grid;
-using BookCatalog.View.Model.DataTable;
+using BookCatalog.View.Model.Grid;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -28,13 +28,13 @@ namespace BookCatalog.Data.Provider
 
         public void Delete(int id)
         {
-            using(IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
                 TEntity entity = Get(id);
                 db.Delete(entity);
             }
         }
-        
+
         public TEntity Get(int id)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
@@ -50,7 +50,7 @@ namespace BookCatalog.Data.Provider
                 return (int)db.Insert(entity);
             }
         }
-        
+
         public void Update(TEntity entity)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
@@ -58,7 +58,7 @@ namespace BookCatalog.Data.Provider
                 db.Update(entity);
             }
         }
-      
+
         protected void ExecuteSP(string spName)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
@@ -102,8 +102,21 @@ namespace BookCatalog.Data.Provider
         protected IEnumerable<T> ExecuteMultiSP<T>(string spName, object param = null)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
-            {                
+            {
                 return db.Query<T>(spName, param: param, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        protected Tuple<IEnumerable<T1>, IEnumerable<T2>> ExecuteMultiSetSP<T1, T2>(string spName, object param = null)
+        {
+            using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
+            {
+                var sets = db.QueryMultiple(spName, param: param, commandType: CommandType.StoredProcedure);
+
+                return new Tuple<IEnumerable<T1>, IEnumerable<T2>>(
+                    sets.Read<T1>(),
+                    sets.Read<T2>()
+                    );
             }
         }
 
@@ -131,7 +144,7 @@ namespace BookCatalog.Data.Provider
 
         public void Dispose()
         {
-            
+
         }
 
     }
