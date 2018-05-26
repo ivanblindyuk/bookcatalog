@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Text;
 using BookCatalog.View.Model.Grid;
+using BookCatalog.Portal.Helpers.Exceptions;
 
 namespace BookCatalog.Portal.Controllers
 {
@@ -51,6 +52,37 @@ namespace BookCatalog.Portal.Controllers
                         recordsTotal = total,
                         recordsFiltered = total
                     });
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            if (filterContext.IsChildAction || filterContext.ExceptionHandled) return;
+
+            var bcException = filterContext.Exception as BookCatalogException;
+
+            List<string> messages = new List<string>();
+
+            if(bcException == null)
+            {
+                messages.Add("Bad request. Please, try again later");
+            }
+            else
+            {
+                if(bcException.Errors == null)
+                {
+                    messages.Add(bcException.Message);
+                }
+                else
+                {
+                    messages.AddRange(bcException.Errors.Select(e => e.Message));
+                }
+            }
+
+            filterContext.ExceptionHandled = true;
+            filterContext.Result = ToJson(messages);
+            filterContext.HttpContext.Response.StatusCode = 500;
+
+            base.OnException(filterContext);
         }
     }
 }

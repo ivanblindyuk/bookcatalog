@@ -120,7 +120,7 @@ namespace BookCatalog.Data.Provider
             }
         }
 
-        protected ResponseEM<T> GetGrid<T>(RequestEM request, string spName)
+        protected ResponseEM<T> GetGrid<T>(RequestEM request, string spName, Func<string, DynamicParameters, IEnumerable<T>> query = null)
             where T : class
         {
             DynamicParameters parameters = new DynamicParameters();
@@ -132,7 +132,11 @@ namespace BookCatalog.Data.Provider
             parameters.Add("@OrderDir", request.IsDescending);
             parameters.Add("@Total", 0, direction: ParameterDirection.Output);
 
-            var result = ExecuteMultiSP<T>(spName, param: parameters);
+            IEnumerable<T> result;
+
+            if (query == null) result = ExecuteMultiSP<T>(spName, param: parameters);
+            else result = query(spName, parameters);
+
             int total = parameters.Get<int>("@Total");
 
             return new ResponseEM<T>

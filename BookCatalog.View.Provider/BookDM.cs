@@ -55,8 +55,12 @@ namespace BookCatalog.View.Provider
             using(var bookRepo = BCContext.Resolver.Resolve<IBookRepository>(BCContext.DbContext))
             {
                 var book = bookRepo.Get(id);
+                var authors = bookRepo.GetAuthors(id);
 
-                return BCContext.Mapper.Map<Book, BookVM>(book);
+                var bookVM = BCContext.Mapper.Map<Book, BookVM>(book);
+                bookVM.Authors = BCContext.Mapper.MapMany<Author, AuthorVM>(authors);
+
+                return bookVM;
             }
         }
 
@@ -69,7 +73,7 @@ namespace BookCatalog.View.Provider
 
                 total = grid.Total;
 
-                return BCContext.Mapper.Map<IEnumerable<Books>, IEnumerable<BooksVM>>(grid.Rows);
+                return BCContext.Mapper.MapMany<Books, BooksVM>(grid.Rows);
             }
         }
 

@@ -1,4 +1,6 @@
-﻿using BookCatalog.Skeleton.DM;
+﻿using BookCatalog.Portal.Helpers.Exceptions;
+using BookCatalog.Portal.Helpers.Extentions;
+using BookCatalog.Skeleton.DM;
 using BookCatalog.View.Model;
 using BookCatalog.View.Model.Grid;
 using System;
@@ -19,6 +21,9 @@ namespace BookCatalog.Portal.Controllers
         [HttpPost]
         public void Save(BookVM book)
         {
+            if (!ModelState.IsValid)
+                throw new BookValidationException(ModelState.SelectErrors());
+
             using (var bookDM = BCContext.Resolver.Resolve<IBookDM>(BCContext))
             {
                 bookDM.Save(book);

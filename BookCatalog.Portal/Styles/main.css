@@ -2,6 +2,12 @@
     background-color: #e3f2fd;
 }
 
+.alert{
+    top: 15em;
+    left: 35%;
+    width: 35%;
+}
+
 .table {
     border-spacing: 0;
 }

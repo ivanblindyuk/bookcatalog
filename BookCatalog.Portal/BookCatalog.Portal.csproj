@@ -109,6 +109,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Main\alert.js" />
     <Content Include="Scripts\Main\data-grid.js" />
     <Content Include="Styles\DataTable\css\dataTables.bootstrap4.css" />
     <Content Include="Styles\DataTable\css\dataTables.bootstrap4.min.css" />
@@ -196,9 +197,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Exceptions\AuthorValidationException.cs" />
+    <Compile Include="Helpers\Exceptions\BookCatalogException.cs" />
+    <Compile Include="Helpers\Exceptions\BookValidationException.cs" />
     <Compile Include="Helpers\Extentions\EnumExtentions.cs" />
+    <Compile Include="Helpers\Extentions\ExceptionExtentions.cs" />
     <Compile Include="Helpers\Extentions\MvcHtmlStringExtentions.cs" />
     <Compile Include="Helpers\KnownValues\Glyphicon.cs" />
+    <Compile Include="Helpers\KnownValues\SqlErrorCode.cs" />
     <Compile Include="Helpers\Optimization\Scripts\Authors.cs" />
     <Compile Include="Helpers\Optimization\Scripts\Books.cs" />
     <Compile Include="Helpers\Optimization\Scripts\KO.cs" />
@@ -280,6 +286,8 @@
     <Content Include="Views\Shared\_Modals.cshtml" />
     <Content Include="Views\Shared\_Validation.cshtml" />
     <Content Include="Views\Authors\_Details.cshtml" />
+    <Content Include="Views\Shared\Alerts\_Error.cshtml" />
+    <Content Include="Views\Shared\_Alerts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

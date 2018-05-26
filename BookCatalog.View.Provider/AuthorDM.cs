@@ -22,7 +22,7 @@ namespace BookCatalog.View.Provider
 
         public void Create(AuthorVM author)
         {
-            using(var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            using (var authorRepo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
             {
                 var authorEntity = BCContext.Mapper.Map<AuthorVM, Author>(author);
 
@@ -57,13 +57,13 @@ namespace BookCatalog.View.Provider
 
                 total = grid.Total;
 
-                return BCContext.Mapper.Map<IEnumerable<Authors>, IEnumerable<AuthorsVM>>(grid.Rows);
+                return BCContext.Mapper.MapMany<Authors, AuthorsVM>(grid.Rows);
             }
         }
 
         public void Save(AuthorVM author)
         {
-            if(author.Id == 0)
+            if (author.Id == 0)
             {
                 Create(author);
             }

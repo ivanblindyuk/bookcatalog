@@ -22,14 +22,17 @@ BEGIN
 		[PageCount] int)
 
 	INSERT INTO @All
-	SELECT 
-		[Id],
-		[Title],
-		[ReleaseDate],
-		[Ranking],
-		[PageCount]
-	FROM [tblBooks]
-	WHERE @Search IS NULL OR [Title] LIKE '%' + @Search + '%'
+	SELECT DISTINCT
+		b.[Id],
+		b.[Title],
+		b.[ReleaseDate],
+		b.[Ranking],
+		b.[PageCount]
+	FROM [tblBooks] as b
+	LEFT JOIN [tblBooks_Authors] as ba on ba.[BookId] = b.[Id]
+	LEFT JOIN [tblAuthors] as a on ba.[AuthorId] = a.[Id]
+	WHERE @Search IS NULL OR b.[Title] LIKE '%' + @Search + '%'
+			OR a.[FirstName] LIKE '%' + @Search + '%' OR a.[LastName] LIKE '%' + @Search + '%'
 
 	SELECT @Total = COUNT(*) FROM @All
 

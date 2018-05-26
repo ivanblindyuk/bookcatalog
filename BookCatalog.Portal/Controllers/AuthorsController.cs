@@ -1,8 +1,12 @@
-﻿using BookCatalog.Skeleton.DM;
+﻿using BookCatalog.Portal.Helpers.Exceptions;
+using BookCatalog.Portal.Helpers.Extentions;
+using BookCatalog.Portal.Helpers.KnownValues;
+using BookCatalog.Skeleton.DM;
 using BookCatalog.View.Model;
 using BookCatalog.View.Model.Grid;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,10 +17,7 @@ namespace BookCatalog.Portal.Controllers
     {
         public ActionResult List()
         {
-            using (var dm = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
-            {
-                return View();
-            }
+            return View();
         }
 
         public ActionResult Create()
@@ -48,10 +49,24 @@ namespace BookCatalog.Portal.Controllers
         {
             using (var authorDM = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
             {
-                authorDM.Delete(id);
+                try
+                {
+                    authorDM.Delete(id);
+                }
+                catch(SqlException ex)
+                {
+                    if(ex.SqlErrorCode() == (int)SqlErrorCode.ForeingKey)
+                        throw new BookCatalogException("Unable to delete this author because there are books written by him");
+
+                    throw;
+                }
+                catch
+                {
+                    throw;
+                }
             }
         }
-        
+
         [HttpPost]
         public JsonResult GetAll(RequestVM request)
         {

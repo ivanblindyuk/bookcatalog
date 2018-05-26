@@ -35,5 +35,10 @@ namespace BookCatalog.Resolution.Core
         {
             return _mapper.Map<TIn, TOut>(source);
         }
+
+        public IEnumerable<TOut> MapMany<TIn, TOut>(IEnumerable<TIn> source)
+        {
+            return _mapper.Map<IEnumerable<TIn>, IEnumerable<TOut>>(source);
+        }
     }
 }
