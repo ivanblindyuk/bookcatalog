@@ -10,6 +10,7 @@ using BookCatalog.Data.Model;
 using BookCatalog.Skeleton.Core;
 using BookCatalog.View.Model.Grid;
 using BookCatalog.Data.Model.Grid;
+using BookCatalog.View.Model.Search;
 
 namespace BookCatalog.View.Provider
 {
@@ -70,6 +71,16 @@ namespace BookCatalog.View.Provider
             else
             {
                 Update(author);
+            }
+        }
+
+        public IEnumerable<AuthorVM> Search(AuthorSearchVM search)
+        {
+            using(var repo = BCContext.Resolver.Resolve<IAuthorRepository>(BCContext.DbContext))
+            {
+                var result = repo.SearchAuthors(search.Name);
+
+                return BCContext.Mapper.MapMany<Author, AuthorVM>(result);
             }
         }
 

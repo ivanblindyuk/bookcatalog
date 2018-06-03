@@ -2,19 +2,22 @@
 
 (function (me) {
     me.formId = "frmBookDetails";
+    me.authorsSelectId = "drpAuthors";
     me.btnSaveId = "btnSave";
     me.btnCancelId = "btnCancel";
 
     me.saveUrl = "/Books/Save";
     me.deleteUrl = "/Books/Delete";
     me.getUrl = "/Books/Get";
+    me.searchAuthorsUrl = "/Authors/Search";
 
     me.validator = null;
+    me.multiselect = null;
 
     me.VM = {
         IsVisible: ko.observable(false),
         RankingRange: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
-        AuthorsSource: ko.observableArray([{ label: "1", value: 1 }, { label: "2", value: 2 }]),
+        SelectedAuthors: ko.observableArray([]),
 
         Id: ko.observable(0),
         Title: ko.observable(),
@@ -31,6 +34,7 @@
         me.VM.Ranking(null);
         me.VM.PageCount(null);
         me.VM.Authors([]);
+        me.VM.SelectedAuthors([]);
 
         me.validator.HideMessages();
     };
@@ -43,7 +47,7 @@
         me.VM.IsVisible(false);
         me.EmptyfyModel();
     };
-    
+
     me.Focus = function () {
         $('html, body').animate({
             scrollTop: 0
@@ -56,10 +60,13 @@
         }
 
         var mapping = {
-            'ignore': ["IsVisible", "RankingRange", "Authors"]
+            'ignore': ["IsVisible", "RankingRange", "SelectedAuthors"]
         };
 
         var model = ko.mapping.toJS(me.VM, mapping);
+
+        var selectedAuthors = me.VM.SelectedAuthors();
+        model.Authors = selectedToAuthors(selectedAuthors);
 
         $.post(me.saveUrl, model, function () {
             $(document).trigger("details.hide");
@@ -92,6 +99,11 @@
             };
 
             ko.mapping.fromJS(result, mapping, me.VM);
+
+            var selectedAuthors = authorsToSelected(result.Authors);
+            me.VM.SelectedAuthors(selectedAuthors);
+
+            me.multiselect.Refresh(result.Authors, selectedAuthors);
 
             if (!me.VM.IsVisible())
                 $(document).trigger("details.show");
@@ -152,9 +164,42 @@
         me.validator.Rules.Between(me.VM.PageCount, 1, 9999);
     };
 
+    var initializeMultiselect = function () {
+        me.multiselect = new selectMultiple(me.authorsSelectId);
+
+        me.multiselect.Initialize({
+            valueField: 'Id',
+            render: {
+                option: function (item, escape) {
+                    return '<div><span>' + escape(item.FirstName) + ' ' + escape(item.LastName) + '</span></div>';
+                },
+                item: function (item, escape) {
+                    return '<div><span>' + escape(item.FirstName) + ' ' + escape(item.LastName) + '</span></div>';
+                },
+            }            
+        },
+        {
+            url: me.searchAuthorsUrl,
+            query: 'Name'
+        });
+    };
+
+    var authorsToSelected = function (authors) {
+        return $.map(authors, function (author) {
+            return author.Id;
+        });
+    };
+
+    var selectedToAuthors = function (selected) {
+        return $.map(selected, function (item) {
+            return { Id: item };
+        });
+    };
+
     me.Initialize = function () {
         bindEvents();
         initializeValidation();
+        initializeMultiselect();
 
         ko.applyBindings(me.VM, $("#" + me.formId)[0]);
     };

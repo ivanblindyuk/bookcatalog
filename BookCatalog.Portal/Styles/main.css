@@ -1,8 +1,8 @@
-﻿.bg-blink{
+﻿.bg-blink {
     background-color: #e3f2fd;
 }
 
-.alert{
+.alert {
     top: 15em;
     left: 35%;
     width: 35%;
@@ -12,18 +12,18 @@
     border-spacing: 0;
 }
 
-.table th,
-.table td{
-    padding: 0.5rem;
-}
+    .table th,
+    .table td {
+        padding: 0.5rem;
+    }
 
-.table .btn-toolbar{
-    width: 96px;
-}
+    .table .btn-toolbar {
+        width: 96px;
+    }
 
-.table .btn-toolbar .btn:not(:last-child){
-    margin-right: 0.25rem;
-}
+        .table .btn-toolbar .btn:not(:last-child) {
+            margin-right: 0.25rem;
+        }
 
 @media(max-width:768px) {
     .row-align {
@@ -31,13 +31,22 @@
     }
 }
 
-.form-control.is-invalid ~ .input-group-append > .btn{
+.form-control.is-invalid ~ .input-group-append > .btn {
     border-top-color: #dc3545;
     border-right-color: #dc3545;
     border-bottom-color: #dc3545;
 }
 
-[role='wrapper'].gj-datepicker .input-group-append > .btn{
+[role='wrapper'].gj-datepicker .input-group-append > .btn {
     border-bottom-right-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
+}
+
+.selectize-dropdown [data-selectable]{
+    padding: 3px 12px;
+}
+
+.selectize-control.multi .selectize-input > div{
+    margin: 0;
+    padding: 0;
 }

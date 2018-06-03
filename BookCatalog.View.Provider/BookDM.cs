@@ -38,7 +38,8 @@ namespace BookCatalog.View.Provider
             {
                 var bookEntity = BCContext.Mapper.Map<BookVM, Book>(book);
 
-                bookRepo.Insert(bookEntity);
+                book.Id = bookRepo.Insert(bookEntity);
+                InsertAuthors(book, book.Authors);
             }
         }
 
@@ -84,6 +85,28 @@ namespace BookCatalog.View.Provider
                 var bookEntity = BCContext.Mapper.Map<BookVM, Book>(book);
 
                 bookRepo.Update(bookEntity);
+
+                DeleteAuthors(book);
+                InsertAuthors(book, book.Authors);
+            }
+        }
+
+        private void DeleteAuthors(BookVM book)
+        {
+            using(var bookRepo = BCContext.Resolver.Resolve<IBookRepository>(BCContext.DbContext))
+            {
+                bookRepo.DeleteAuthors(book.Id);
+            }
+        }
+
+        private void InsertAuthors(BookVM book, IEnumerable<AuthorVM> authors)
+        {
+            using (var bookRepo = BCContext.Resolver.Resolve<IBookRepository>(BCContext.DbContext))
+            {
+                foreach (AuthorVM author in authors)
+                {
+                    bookRepo.SetAuthor(book.Id, author.Id);
+                }
             }
         }
     }

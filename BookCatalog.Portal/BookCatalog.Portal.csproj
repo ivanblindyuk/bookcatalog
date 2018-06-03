@@ -109,8 +109,13 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\External\selectize.js" />
+    <Content Include="Scripts\External\selectize.min.js" />
     <Content Include="Scripts\Main\alert.js" />
     <Content Include="Scripts\Main\data-grid.js" />
+    <Content Include="Scripts\Main\select-multiple.js" />
+    <Content Include="Styles\Bootstrap-multiselect\selectize.bootstrap3.css" />
+    <Content Include="Styles\Bootstrap-multiselect\selectize.bootstrap4.css" />
     <Content Include="Styles\DataTable\css\dataTables.bootstrap4.css" />
     <Content Include="Styles\DataTable\css\dataTables.bootstrap4.min.css" />
     <Content Include="Styles\DataTable\images\sort_asc.png" />
@@ -130,8 +135,6 @@
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
-    <Content Include="Scripts\External\bootstrap-multiselect.js" />
-    <Content Include="Scripts\External\bootstrap-multiselect.min.js" />
     <Content Include="Scripts\External\gijgo.js" />
     <Content Include="Scripts\External\gijgo.min.js" />
     <Content Include="Scripts\External\jquery-3.3.1.js" />
@@ -158,7 +161,6 @@
     <Content Include="Scripts\Views\Authors\author-list.js" />
     <Content Include="Scripts\Views\Books\book-details.js" />
     <Content Include="Scripts\Views\Books\book-list.js" />
-    <Content Include="Styles\Bootstrap-multiselect\bootstrap-multiselect.css" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.css" />
     <Content Include="Styles\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Styles\Bootstrap\bootstrap-reboot.css" />
@@ -288,6 +290,7 @@
     <Content Include="Views\Authors\_Details.cshtml" />
     <Content Include="Views\Shared\Alerts\_Error.cshtml" />
     <Content Include="Views\Shared\_Alerts.cshtml" />
+    <Content Include="Views\Shared\_Templates.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -298,6 +301,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\Templates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookCatalog.Resolution\BookCatalog.Resolution.csproj">

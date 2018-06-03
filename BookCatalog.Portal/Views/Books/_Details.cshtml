@@ -12,13 +12,13 @@
         <div class="col-md-2">
             <div class="form-group">
                 <label for="txtReleaseDate">Release Date</label>
-                <input id="txtReleaseDate" data-role="datepicker" data-bind="value: ReleaseDate" />
+                <input id="txtReleaseDate" dom-role="datepicker" data-bind="value: ReleaseDate" />
             </div>
         </div>
         <div class="col-md-1">
             <div class="form-group">
-                <label for="txtRanking">Ranking</label>
-                <select class="form-control" id="txtRanking" data-bind="value: Ranking, options: RankingRange, optionsCaption: ''"></select>
+                <label for="drpRanking">Ranking</label>
+                <select class="form-control" id="drpRanking" data-bind="value: Ranking, options: RankingRange, optionsCaption: ''"></select>
             </div>
         </div>
         <div class="col-md-1">
@@ -29,9 +29,17 @@
         </div>
         <div class="col-md-2">
             <div class="form-group">
-                <label for="txtAuthors">Authors</label>
-                <select data-role="multiselect" multiple="multiple" class="form-control" id="txtAuthors"
-                        data-bind="selectedOptions: Authors, options: AuthorsSource, optionsText: 'label', optionsValue: 'value'"></select>
+                <label for="drpAuthors">Authors</label>
+                <div>
+                    <select dom-role="multiselect" id="drpAuthors" multiple="multiple" class="form-control" placeholder="None selected"
+                            data-bind="selectedOptions: SelectedAuthors,
+                            options: Authors,
+                            optionsText: function(item){
+                                return item.FirstName() + ' ' + item.LastName();
+                            },
+                            optionsValue: 'Id'">                        
+                    </select>                
+                </div>
             </div>
         </div>
         <div class="col-md-1">

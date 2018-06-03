@@ -19,6 +19,11 @@ namespace BookCatalog.Data.Provider
         {
         }
 
+        public void DeleteAuthors(int bookId)
+        {
+            Execute(@"Delete from tblBooks_Authors where BookId = @BookId", new { BookId = bookId });
+        }
+        
         public IEnumerable<Author> GetAuthors(int bookId)
         {
             return ExecuteMultiQuery<Author>(@"Select a.* from tblAuthors as a
@@ -45,6 +50,12 @@ namespace BookCatalog.Data.Provider
 
                 return result.Item1;
             });
+        }
+
+        public void SetAuthor(int bookId, int authorId)
+        {
+            Execute(@"Insert into tblBooks_Authors (BookId, AuthorId) values (@BookId, @AuthorId)",
+                new { BookId = bookId, AuthorId = authorId });
         }
     }
 }

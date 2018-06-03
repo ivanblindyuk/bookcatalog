@@ -11,23 +11,34 @@
     me.Layout = function () {
         me.Plugins.DatePicker.Init();
         me.Plugins.DatePicker.EmbedValidationMessage();
+
+        //me.Plugins.Multiselect.Init();
     };
 })(Config);
 
 (function (me) {
     me.DatePicker = {
         Init: function () {
-            $('[data-role="datepicker"]').datepicker({
+            $('[dom-role="datepicker"]').datepicker({
                 uiLibrary: 'bootstrap4',
                 iconsLibrary: 'fontawesome',
                 format: Config.KnownValues.DateFormat
             });
         },
         EmbedValidationMessage: function () {
-            var wrapper = $('[data-role="datepicker"]').parent();
+            var wrapper = $('[dom-role="datepicker"]').parent();
             var messageElement = $(wrapper).siblings(".invalid-feedback");
 
             wrapper.append(messageElement);
+        }
+    };
+
+    me.Multiselect = {
+        Init: function () {
+            $('[dom-role="multiselect"]').selectize(me.Multiselect.Defaults);
+        },
+        Defaults: {
+            hideSelected: true
         }
     };
 })(Config.Plugins);

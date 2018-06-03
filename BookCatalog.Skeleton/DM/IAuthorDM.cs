@@ -1,5 +1,6 @@
 ﻿using BookCatalog.View.Model;
 using BookCatalog.View.Model.Grid;
+using BookCatalog.View.Model.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace BookCatalog.Skeleton.DM
         void Create(AuthorVM author);
         void Update(AuthorVM author);
         void Delete(int id);
+        IEnumerable<AuthorVM> Search(AuthorSearchVM search);
     }
 }

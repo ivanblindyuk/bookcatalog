@@ -11,5 +11,6 @@ namespace BookCatalog.Skeleton.Repositories
     public interface IAuthorRepository : IDapperRepository<Author>
     {
         ResponseEM<Authors> GetAuthors(RequestEM request);
+        IEnumerable<Author> SearchAuthors(string name);
     }
 }

@@ -21,6 +21,8 @@ namespace BookCatalog.Portal.Controllers
         [HttpPost]
         public void Save(BookVM book)
         {
+            ModelState.ExcludeValidation(nameof(BookVM.Authors), true);
+
             if (!ModelState.IsValid)
                 throw new BookValidationException(ModelState.SelectErrors());
 

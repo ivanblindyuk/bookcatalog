@@ -21,7 +21,7 @@ namespace BookCatalog.View.Model
 
         [Range(1, 9999, ErrorMessage = "Pages value must be between 1 and 9999")]
         public int? PageCount { get; set; }
-
+        
         public IEnumerable<AuthorVM> Authors { get; set; }
     }
 }

@@ -67,11 +67,11 @@ namespace BookCatalog.Data.Provider
             }
         }
 
-        protected void Execute(string query)
+        protected void Execute(string query, object param = null)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
-                db.Execute(query);
+                db.Execute(query, param);
             }
         }
 

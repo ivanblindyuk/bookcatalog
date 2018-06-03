@@ -20,7 +20,8 @@ namespace BookCatalog.Portal.Helpers.Optimization.Scripts
                             "~/Scripts/Main/ajax-global.js",
                             "~/Scripts/Main/modal.js",
                             "~/Scripts/Main/alert.js",
-                            "~/Scripts/Main/data-grid.js"
+                            "~/Scripts/Main/data-grid.js",
+                            "~/Scripts/Main/select-multiple.js"
                             )
                 );
         }

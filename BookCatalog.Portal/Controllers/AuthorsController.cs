@@ -4,6 +4,7 @@ using BookCatalog.Portal.Helpers.KnownValues;
 using BookCatalog.Skeleton.DM;
 using BookCatalog.View.Model;
 using BookCatalog.View.Model.Grid;
+using BookCatalog.View.Model.Search;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -76,6 +77,17 @@ namespace BookCatalog.Portal.Controllers
                 var model = bookDM.GetAuthors(request, out total);
 
                 return ToGridJson(model, total, request.draw);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Search(AuthorSearchVM authorSearch)
+        {
+            using(var dm = BCContext.Resolver.Resolve<IAuthorDM>(BCContext))
+            {
+                var result = dm.Search(authorSearch);
+
+                return ToJson(result);
             }
         }
     }

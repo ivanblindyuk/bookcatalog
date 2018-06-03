@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BookCatalog.Data.Model;
 using BookCatalog.Skeleton.Core;
 using BookCatalog.Data.Model.Grid;
+using Dapper;
 
 namespace BookCatalog.Data.Provider
 {
@@ -20,6 +21,19 @@ namespace BookCatalog.Data.Provider
         public ResponseEM<Authors> GetAuthors(RequestEM request)
         {
             return GetGrid<Authors>(request, "uspSelectAuthors");
+        }
+
+        public IEnumerable<Author> SearchAuthors(string name)
+        {
+            string query = @"Select Top 5 Id, FirstName, LastName 
+                            From tblAuthors
+                            Where @Name is null Or FirstName like '%' + @Name + '%' 
+                                    Or LastName like '%' + @Name + '%'";
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Name", name);
+
+            return ExecuteMultiQuery<Author>(query, param: parameters);
         }
     }
 }

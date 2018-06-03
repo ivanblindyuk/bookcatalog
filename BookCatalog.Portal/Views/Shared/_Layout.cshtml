@@ -8,7 +8,7 @@
     <link href="~/Styles/Bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="~/Styles/FontAwesome/css/fontawesome-all.css" rel="stylesheet" />
     <link href="~/Styles/Bootstrap-datepicker/gijgo.css" rel="stylesheet" />
-    <link href="~/Styles/Bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet" />
+    <link href="~/Styles/Bootstrap-multiselect/selectize.bootstrap4.css" rel="stylesheet" />
     <link href="~/Styles/DataTable/css/dataTables.bootstrap4.css" rel="stylesheet" />
     <link href="~/Styles/WaitMe/waitMe.css" rel="stylesheet" />
     @System.Web.Optimization.Styles.Render("~/bundles/styles/main")
@@ -21,7 +21,7 @@
     <script src="~/Scripts/External/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/External/knockout.validation.js"></script>
     <script src="~/Scripts/External/gijgo.js"></script>
-    <script src="~/Scripts/External/bootstrap-multiselect.js"></script>
+    <script src="~/Scripts/External/selectize.js"></script>
     <script src="~/Scripts/DataTable/jquery.dataTables.js"></script>
     <script src="~/Scripts/DataTable/dataTables.bootstrap4.js"></script>
     <script src="~/Scripts/External/waitMe.js"></script>
@@ -45,6 +45,7 @@
 
     @Html.Partial("_Modals")
     @Html.Partial("_Alerts")
+    @Html.Partial("_Templates")
 
     <script>
         Config.Layout();

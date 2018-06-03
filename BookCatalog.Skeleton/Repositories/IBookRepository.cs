@@ -12,5 +12,7 @@ namespace BookCatalog.Skeleton.Repositories
     {
         ResponseEM<Books> GetBooks(RequestEM request);
         IEnumerable<Author> GetAuthors(int bookId);
+        void DeleteAuthors(int bookId);
+        void SetAuthor(int bookId, int authorId);
     }
 }
