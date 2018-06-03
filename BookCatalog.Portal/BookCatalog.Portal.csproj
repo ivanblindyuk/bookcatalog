@@ -114,7 +114,6 @@
     <Content Include="Scripts\Main\alert.js" />
     <Content Include="Scripts\Main\data-grid.js" />
     <Content Include="Scripts\Main\select-multiple.js" />
-    <Content Include="Styles\Bootstrap-multiselect\selectize.bootstrap3.css" />
     <Content Include="Styles\Bootstrap-multiselect\selectize.bootstrap4.css" />
     <Content Include="Styles\DataTable\css\dataTables.bootstrap4.css" />
     <Content Include="Styles\DataTable\css\dataTables.bootstrap4.min.css" />
