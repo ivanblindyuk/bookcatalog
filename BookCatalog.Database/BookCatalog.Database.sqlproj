@@ -60,6 +60,7 @@
     <Folder Include="Tables" />
     <Folder Include="PostDeployment" />
     <Folder Include="StoredProcedures" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblAuthors.sql" />
@@ -67,6 +68,8 @@
     <Build Include="Tables\tblBooks_Authors.sql" />
     <Build Include="StoredProcedures\uspSelectBooks.sql" />
     <Build Include="StoredProcedures\uspSelectAuthors.sql" />
+    <Build Include="Functions\fnAuthorExists.sql" />
+    <Build Include="StoredProcedures\uspInsertAuthor.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PostDeployment\Insert_tblAuthors.sql" />

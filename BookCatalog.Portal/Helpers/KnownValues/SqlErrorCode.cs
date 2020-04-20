@@ -8,6 +8,7 @@ namespace BookCatalog.Portal.Helpers.KnownValues
     public enum SqlErrorCode
     {
         ForeingKey = 547,
-        PrimaryKey = 2601
+        PrimaryKey = 2601,
+        Custom = 50000
     }
 }

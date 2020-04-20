@@ -18,6 +18,16 @@ namespace BookCatalog.Data.Provider
         {
         }
 
+        public void CreateAuthor(Author author)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+
+            parameters.Add("@FirstName", author.FirstName);
+            parameters.Add("@LastName", author.LastName);
+
+            ExecuteSP("uspInsertAuthor", parameters);
+        }
+
         public ResponseEM<Authors> GetAuthors(RequestEM request)
         {
             return GetGrid<Authors>(request, "uspSelectAuthors");

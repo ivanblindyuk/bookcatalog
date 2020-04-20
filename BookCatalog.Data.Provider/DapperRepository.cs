@@ -59,11 +59,11 @@ namespace BookCatalog.Data.Provider
             }
         }
 
-        protected void ExecuteSP(string spName)
+        protected void ExecuteSP(string spName, object param = null)
         {
             using (IDbConnection db = new SqlConnection(DbContext.ConnectionString))
             {
-                db.Execute(spName, commandType: CommandType.StoredProcedure);
+                db.Execute(spName, param: param, commandType: CommandType.StoredProcedure);
             }
         }
 

@@ -27,7 +27,7 @@ namespace BookCatalog.View.Provider
             {
                 var authorEntity = BCContext.Mapper.Map<AuthorVM, Author>(author);
 
-                authorRepo.Insert(authorEntity);
+                authorRepo.CreateAuthor(authorEntity);
             }
         }
 

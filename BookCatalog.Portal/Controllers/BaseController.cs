@@ -9,6 +9,9 @@ using System.Web.Mvc;
 using System.Text;
 using BookCatalog.View.Model.Grid;
 using BookCatalog.Portal.Helpers.Exceptions;
+using System.Data.SqlClient;
+using BookCatalog.Portal.Helpers.Extentions;
+using BookCatalog.Portal.Helpers.KnownValues;
 
 namespace BookCatalog.Portal.Controllers
 {
@@ -59,14 +62,21 @@ namespace BookCatalog.Portal.Controllers
             if (filterContext.IsChildAction || filterContext.ExceptionHandled) return;
 
             var bcException = filterContext.Exception as BookCatalogException;
+            var sqlException = filterContext.Exception as SqlException;
+
+            if(sqlException != null)
+            {
+                if (sqlException.SqlErrorCode() != (int)SqlErrorCode.Custom)
+                    sqlException = null;
+            }
 
             List<string> messages = new List<string>();
 
-            if(bcException == null)
+            if(bcException == null && sqlException == null)
             {
                 messages.Add("Bad request. Please, try again later");
             }
-            else
+            else if(bcException != null)
             {
                 if(bcException.Errors == null)
                 {
@@ -76,6 +86,10 @@ namespace BookCatalog.Portal.Controllers
                 {
                     messages.AddRange(bcException.Errors.Select(e => e.Message));
                 }
+            }
+            else
+            {
+                messages.Add(sqlException.Message);
             }
 
             filterContext.ExceptionHandled = true;
